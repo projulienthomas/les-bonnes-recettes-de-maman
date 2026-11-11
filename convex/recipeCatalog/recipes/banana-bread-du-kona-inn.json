@@ -281,7 +281,9 @@
         }
       ],
       "subRecipes": [],
-      "notes": []
+      "notes": [
+        "Versez la farine en une seule fois et mélangez juste assez pour qu’il ne reste plus de farine sèche : la pâte peut rester un peu grumeleuse, c’est normal. Trop mélanger rend le banana bread dense et peut le faire retomber au centre."
+      ]
     },
     "en": {
       "title": "Banana Bread",
@@ -555,7 +557,9 @@
         }
       ],
       "subRecipes": [],
-      "notes": []
+      "notes": [
+        "Add the flour all at once and mix only until no dry flour remains: the batter can stay a little lumpy, that’s normal. Overmixing makes the banana bread dense and can make it sink in the middle."
+      ]
     }
   },
   "imageCredit": {

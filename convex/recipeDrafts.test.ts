@@ -578,7 +578,7 @@ describe("recipe working drafts", () => {
       }),
     ).resolves.toMatchObject({
       description: "Banana bread moelleux aux bananes bien mûres.",
-      notes: [],
+      notes: [expect.stringContaining("farine en une seule fois")],
       status: "published",
     });
     await expect(
