@@ -21,6 +21,10 @@
       "timeLabel": "1 h 05 à 1 h 20",
       "temperature": "175 °C",
       "equipment": [
+        "1 casserole",
+        "2 saladiers",
+        "1 fouet",
+        "1 spatule",
         "1 moule à cake"
       ],
       "ingredients": [
@@ -35,7 +39,7 @@
           "name": "beurre",
           "quantity": "115",
           "unit": "g",
-          "notes": "ramolli",
+          "notes": "fondu",
           "id": "ingredient-main-1"
         },
         {
@@ -86,6 +90,27 @@
           "unit": "pincée",
           "notes": "",
           "id": "ingredient-main-8"
+        },
+        {
+          "name": "noix de pécan hachées",
+          "quantity": "60",
+          "unit": "g",
+          "notes": "pour la garniture facultative",
+          "id": "ingredient-main-9"
+        },
+        {
+          "name": "cassonade foncée",
+          "quantity": "2",
+          "unit": "c. à soupe",
+          "notes": "pour la garniture facultative",
+          "id": "ingredient-main-10"
+        },
+        {
+          "name": "cannelle",
+          "quantity": "1/2",
+          "unit": "c. à café",
+          "notes": "pour la garniture facultative",
+          "id": "ingredient-main-11"
         }
       ],
       "sections": [
@@ -94,36 +119,21 @@
           "steps": [
             {
               "id": "step-0-0",
-              "text": "Préchauffer le four à 175 °C.",
+              "text": "Préchauffer le four à 175 °C et graisser légèrement le moule à cake.",
               "ingredientUses": []
             },
             {
-              "id": "step-0-1",
-              "text": "Battre le beurre ramolli avec le sucre jusqu’à obtenir un mélange clair, léger et mousseux.",
+              "id": "step-0-5",
+              "text": "Faire fondre le beurre dans une casserole à feu doux, puis le laisser tiédir hors du feu.",
               "ingredientUses": [
-                {
-                  "ingredientId": "ingredient-main-0"
-                },
                 {
                   "ingredientId": "ingredient-main-1"
                 }
               ]
             },
             {
-              "id": "step-0-2",
-              "text": "Ajouter les bananes écrasées et les œufs battus, puis mélanger jusqu’à obtenir une pâte homogène.",
-              "ingredientUses": [
-                {
-                  "ingredientId": "ingredient-main-2"
-                },
-                {
-                  "ingredientId": "ingredient-main-3"
-                }
-              ]
-            },
-            {
               "id": "step-0-3",
-              "text": "Dans un autre saladier, mélanger la farine T45, le bicarbonate de soude et le sel. Tamiser idéalement les ingrédients secs plusieurs fois, puis les incorporer à la préparation à la banane sans trop travailler la pâte.",
+              "text": "Pendant que le beurre fond, mélanger dans un premier saladier la farine, le bicarbonate de soude, le sel et la cannelle. Idéalement, tamiser ce mélange.",
               "ingredientUses": [
                 {
                   "ingredientId": "ingredient-main-4"
@@ -133,18 +143,107 @@
                 },
                 {
                   "ingredientId": "ingredient-main-6"
+                },
+                {
+                  "ingredientId": "ingredient-main-8"
+                }
+              ]
+            },
+            {
+              "id": "step-0-6",
+              "text": "Écraser les bananes à la fourchette.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-2"
+                }
+              ]
+            },
+            {
+              "id": "step-0-1",
+              "text": "Verser le beurre fondu tiède dans un second saladier, plus grand. Ajouter le sucre et fouetter jusqu’à obtenir un mélange homogène.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-1"
+                },
+                {
+                  "ingredientId": "ingredient-main-0"
+                }
+              ]
+            },
+            {
+              "id": "step-0-2",
+              "text": "Ajouter les œufs battus, puis les bananes écrasées, et mélanger jusqu’à obtenir une pâte homogène.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-3"
+                },
+                {
+                  "ingredientId": "ingredient-main-2"
+                }
+              ]
+            },
+            {
+              "id": "step-0-7",
+              "text": "Verser le contenu du premier saladier dans le grand saladier et mélanger à la spatule, juste assez pour qu’il ne reste plus de farine sèche. Ne pas trop travailler la pâte.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-4"
+                },
+                {
+                  "ingredientId": "ingredient-main-5"
+                },
+                {
+                  "ingredientId": "ingredient-main-6"
+                },
+                {
+                  "ingredientId": "ingredient-main-8"
                 }
               ]
             },
             {
               "id": "step-0-4",
-              "text": "Incorporer les noix de pécan hachées et la pincée de cannelle à la pâte.",
+              "text": "Incorporer les noix de pécan hachées.",
               "ingredientUses": [
                 {
                   "ingredientId": "ingredient-main-7"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Garniture croustillante aux noix (facultative)",
+          "steps": [
+            {
+              "id": "step-3-0",
+              "text": "Si vous faites la garniture : mélanger les noix de pécan, la cassonade foncée et la cannelle de la garniture.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-9"
                 },
                 {
-                  "ingredientId": "ingredient-main-8"
+                  "ingredientId": "ingredient-main-10"
+                },
+                {
+                  "ingredientId": "ingredient-main-11"
+                }
+              ]
+            },
+            {
+              "id": "step-3-1",
+              "text": "Verser la moitié de la pâte dans le moule et parsemer la moitié du mélange aux noix.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-9"
+                }
+              ]
+            },
+            {
+              "id": "step-3-2",
+              "text": "Ajouter le reste de pâte, parsemer le reste du mélange sur le dessus et presser légèrement.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-9"
                 }
               ]
             }
@@ -155,7 +254,7 @@
           "steps": [
             {
               "id": "step-1-0",
-              "text": "Verser la pâte dans 1 moule à cake légèrement graissé.",
+              "text": "Sans garniture, verser toute la pâte dans le moule.",
               "ingredientUses": []
             },
             {
@@ -179,37 +278,6 @@
               "ingredientUses": []
             }
           ]
-        },
-        {
-          "title": "Garniture croustillante aux noix (facultative)",
-          "steps": [
-            {
-              "id": "step-3-0",
-              "text": "Mélanger 60 g de noix de pécan hachées, 2 c. à s. de cassonade foncée et 1/2 c. à café de cannelle.",
-              "ingredientUses": [
-                {
-                  "ingredientId": "ingredient-main-7"
-                },
-                {
-                  "ingredientId": "ingredient-main-8"
-                }
-              ]
-            },
-            {
-              "id": "step-3-1",
-              "text": "Verser la moitié de la pâte dans le moule et parsemer une partie du mélange aux noix.",
-              "ingredientUses": [
-                {
-                  "ingredientId": "ingredient-main-7"
-                }
-              ]
-            },
-            {
-              "id": "step-3-2",
-              "text": "Ajouter le reste de pâte, parsemer le reste du mélange sur le dessus et presser légèrement.",
-              "ingredientUses": []
-            }
-          ]
         }
       ],
       "subRecipes": [],
@@ -227,6 +295,10 @@
       "timeLabel": "1 h 05 to 1 h 20",
       "temperature": "175 °C",
       "equipment": [
+        "1 saucepan",
+        "2 bowls",
+        "1 whisk",
+        "1 spatula",
         "1 loaf pan"
       ],
       "ingredients": [
@@ -241,7 +313,7 @@
           "name": "butter",
           "quantity": "115",
           "unit": "g",
-          "notes": "softened",
+          "notes": "melted",
           "id": "ingredient-main-1"
         },
         {
@@ -292,6 +364,27 @@
           "unit": "pinch",
           "notes": "",
           "id": "ingredient-main-8"
+        },
+        {
+          "name": "chopped pecans",
+          "quantity": "60",
+          "unit": "g",
+          "notes": "for the optional topping",
+          "id": "ingredient-main-9"
+        },
+        {
+          "name": "dark brown sugar",
+          "quantity": "2",
+          "unit": "tbsp",
+          "notes": "for the optional topping",
+          "id": "ingredient-main-10"
+        },
+        {
+          "name": "cinnamon",
+          "quantity": "1/2",
+          "unit": "tsp",
+          "notes": "for the optional topping",
+          "id": "ingredient-main-11"
         }
       ],
       "sections": [
@@ -300,36 +393,21 @@
           "steps": [
             {
               "id": "step-0-0",
-              "text": "Preheat the oven to 175 °C.",
+              "text": "Preheat the oven to 175 °C and lightly grease the loaf pan.",
               "ingredientUses": []
             },
             {
-              "id": "step-0-1",
-              "text": "Beat the softened butter and sugar until light and fluffy.",
+              "id": "step-0-5",
+              "text": "Melt the butter in a saucepan over low heat, then let it cool slightly off the heat.",
               "ingredientUses": [
-                {
-                  "ingredientId": "ingredient-main-0"
-                },
                 {
                   "ingredientId": "ingredient-main-1"
                 }
               ]
             },
             {
-              "id": "step-0-2",
-              "text": "Add the mashed bananas and beaten eggs, then mix until smooth.",
-              "ingredientUses": [
-                {
-                  "ingredientId": "ingredient-main-2"
-                },
-                {
-                  "ingredientId": "ingredient-main-3"
-                }
-              ]
-            },
-            {
               "id": "step-0-3",
-              "text": "In another bowl, combine the T45 flour, baking soda and salt. Sift the dry ingredients, ideally several times, then fold them into the banana mixture without overmixing.",
+              "text": "While the butter melts, combine the flour, baking soda, salt and cinnamon in a first bowl. Ideally, sift this mixture.",
               "ingredientUses": [
                 {
                   "ingredientId": "ingredient-main-4"
@@ -339,18 +417,107 @@
                 },
                 {
                   "ingredientId": "ingredient-main-6"
+                },
+                {
+                  "ingredientId": "ingredient-main-8"
+                }
+              ]
+            },
+            {
+              "id": "step-0-6",
+              "text": "Mash the bananas with a fork.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-2"
+                }
+              ]
+            },
+            {
+              "id": "step-0-1",
+              "text": "Pour the warm melted butter into a second, larger bowl. Add the sugar and whisk until smooth.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-1"
+                },
+                {
+                  "ingredientId": "ingredient-main-0"
+                }
+              ]
+            },
+            {
+              "id": "step-0-2",
+              "text": "Add the beaten eggs, then the mashed bananas, and mix until smooth.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-3"
+                },
+                {
+                  "ingredientId": "ingredient-main-2"
+                }
+              ]
+            },
+            {
+              "id": "step-0-7",
+              "text": "Add the contents of the first bowl to the large bowl and fold with a spatula just until no dry flour remains. Do not overmix.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-4"
+                },
+                {
+                  "ingredientId": "ingredient-main-5"
+                },
+                {
+                  "ingredientId": "ingredient-main-6"
+                },
+                {
+                  "ingredientId": "ingredient-main-8"
                 }
               ]
             },
             {
               "id": "step-0-4",
-              "text": "Fold the chopped pecans and pinch of cinnamon into the batter.",
+              "text": "Fold in the chopped pecans.",
               "ingredientUses": [
                 {
                   "ingredientId": "ingredient-main-7"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Crunchy Pecan Topping (Optional)",
+          "steps": [
+            {
+              "id": "step-3-0",
+              "text": "If making the topping: mix the topping pecans, dark brown sugar and cinnamon.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-9"
                 },
                 {
-                  "ingredientId": "ingredient-main-8"
+                  "ingredientId": "ingredient-main-10"
+                },
+                {
+                  "ingredientId": "ingredient-main-11"
+                }
+              ]
+            },
+            {
+              "id": "step-3-1",
+              "text": "Pour half the batter into the pan and sprinkle with half the pecan mixture.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-9"
+                }
+              ]
+            },
+            {
+              "id": "step-3-2",
+              "text": "Add the remaining batter, sprinkle the rest of the mixture on top and press it in lightly.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-9"
                 }
               ]
             }
@@ -361,7 +528,7 @@
           "steps": [
             {
               "id": "step-1-0",
-              "text": "Pour the batter into 1 lightly greased loaf pan.",
+              "text": "Without the topping, pour all the batter into the pan.",
               "ingredientUses": []
             },
             {
@@ -382,37 +549,6 @@
             {
               "id": "step-2-0",
               "text": "This banana bread freezes very well.",
-              "ingredientUses": []
-            }
-          ]
-        },
-        {
-          "title": "Crunchy Pecan Topping (Optional)",
-          "steps": [
-            {
-              "id": "step-3-0",
-              "text": "Mix 60 g chopped pecans, 2 tbsp dark brown sugar and 1/2 tsp cinnamon.",
-              "ingredientUses": [
-                {
-                  "ingredientId": "ingredient-main-7"
-                },
-                {
-                  "ingredientId": "ingredient-main-8"
-                }
-              ]
-            },
-            {
-              "id": "step-3-1",
-              "text": "Pour half the batter into the pan and sprinkle with some of the pecan mixture.",
-              "ingredientUses": [
-                {
-                  "ingredientId": "ingredient-main-7"
-                }
-              ]
-            },
-            {
-              "id": "step-3-2",
-              "text": "Add the remaining batter, sprinkle the rest of the pecan mixture on top and press it in lightly.",
               "ingredientUses": []
             }
           ]

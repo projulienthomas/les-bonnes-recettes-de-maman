@@ -12,34 +12,114 @@
       "totalTime": "1 h 05 a 1 h 20",
       "timeLabel": "1 h 05 a 1 h 20",
       "temperature": "175 °C",
-      "equipment": ["1 fôrma de bolo inglês"],
+      "equipment": [
+        "1 panela",
+        "2 tigelas",
+        "1 batedor",
+        "1 espátula",
+        "1 fôrma de bolo inglês"
+      ],
       "notes": [],
       "ingredients": {
-        "ingredient-main-0": { "name": "açúcar refinado", "quantity": "150", "unit": "g", "notes": "" },
-        "ingredient-main-1": { "name": "manteiga", "quantity": "115", "unit": "g", "notes": "amolecida" },
-        "ingredient-main-2": { "name": "bananas bem maduras", "quantity": "325 a 350", "unit": "g", "notes": "amassadas, cerca de 3 a 4 bananas, dependendo do tamanho" },
-        "ingredient-main-3": { "name": "ovos", "quantity": "2", "unit": "", "notes": "bem batidos" },
-        "ingredient-main-4": { "name": "farinha de trigo (T45)", "quantity": "150", "unit": "g", "notes": "" },
-        "ingredient-main-5": { "name": "bicarbonato de sódio", "quantity": "1", "unit": "colher (chá)", "notes": "" },
-        "ingredient-main-6": { "name": "sal", "quantity": "3", "unit": "g", "notes": "" },
-        "ingredient-main-7": { "name": "nozes-pecã picadas", "quantity": "40", "unit": "g", "notes": "" },
-        "ingredient-main-8": { "name": "canela", "quantity": "1", "unit": "pitada", "notes": "" }
+        "ingredient-main-0": {
+          "name": "açúcar refinado",
+          "quantity": "150",
+          "unit": "g",
+          "notes": ""
+        },
+        "ingredient-main-1": {
+          "name": "manteiga",
+          "quantity": "115",
+          "unit": "g",
+          "notes": "derretida"
+        },
+        "ingredient-main-2": {
+          "name": "bananas bem maduras",
+          "quantity": "325 a 350",
+          "unit": "g",
+          "notes": "amassadas, cerca de 3 a 4 bananas, dependendo do tamanho"
+        },
+        "ingredient-main-3": {
+          "name": "ovos",
+          "quantity": "2",
+          "unit": "",
+          "notes": "bem batidos"
+        },
+        "ingredient-main-4": {
+          "name": "farinha de trigo (T45)",
+          "quantity": "150",
+          "unit": "g",
+          "notes": ""
+        },
+        "ingredient-main-5": {
+          "name": "bicarbonato de sódio",
+          "quantity": "1",
+          "unit": "colher (chá)",
+          "notes": ""
+        },
+        "ingredient-main-6": {
+          "name": "sal",
+          "quantity": "3",
+          "unit": "g",
+          "notes": ""
+        },
+        "ingredient-main-7": {
+          "name": "nozes-pecã picadas",
+          "quantity": "40",
+          "unit": "g",
+          "notes": ""
+        },
+        "ingredient-main-8": {
+          "name": "canela",
+          "quantity": "1",
+          "unit": "pitada",
+          "notes": ""
+        },
+        "ingredient-main-9": {
+          "name": "nozes-pecã picadas",
+          "quantity": "60",
+          "unit": "g",
+          "notes": "para a cobertura opcional"
+        },
+        "ingredient-main-10": {
+          "name": "açúcar mascavo escuro",
+          "quantity": "2",
+          "unit": "colheres (sopa)",
+          "notes": "para a cobertura opcional"
+        },
+        "ingredient-main-11": {
+          "name": "canela",
+          "quantity": "1/2",
+          "unit": "colher (chá)",
+          "notes": "para a cobertura opcional"
+        }
       },
       "sections": [
         {
           "title": "Preparo",
           "steps": {
-            "step-0-0": "Preaqueça o forno a 175 °C.",
-            "step-0-1": "Bata a manteiga amolecida com o açúcar até obter uma mistura clara, leve e fofa.",
-            "step-0-2": "Junte as bananas amassadas e os ovos batidos e misture até obter uma massa homogênea.",
-            "step-0-3": "Em outra tigela, misture a farinha de trigo T45, o bicarbonato de sódio e o sal. O ideal é peneirar os ingredientes secos várias vezes; depois, incorpore-os à mistura de banana sem trabalhar demais a massa.",
-            "step-0-4": "Incorpore à massa as nozes-pecã picadas e a pitada de canela."
+            "step-0-0": "Preaqueça o forno a 175 °C e unte levemente a fôrma de bolo inglês.",
+            "step-0-5": "Derreta a manteiga em uma panela em fogo baixo e deixe amornar fora do fogo.",
+            "step-0-3": "Enquanto a manteiga derrete, misture em uma primeira tigela a farinha, o bicarbonato de sódio, o sal e a canela. O ideal é peneirar essa mistura.",
+            "step-0-6": "Amasse as bananas com um garfo.",
+            "step-0-1": "Despeje a manteiga derretida morna em uma segunda tigela, maior. Junte o açúcar e bata até obter uma mistura homogênea.",
+            "step-0-2": "Junte os ovos batidos e depois as bananas amassadas, e misture até obter uma massa homogênea.",
+            "step-0-7": "Despeje o conteúdo da primeira tigela na tigela grande e misture com a espátula só até não restar farinha seca. Não trabalhe demais a massa.",
+            "step-0-4": "Incorpore as nozes-pecã picadas."
+          }
+        },
+        {
+          "title": "Cobertura crocante de nozes (opcional)",
+          "steps": {
+            "step-3-0": "Se for fazer a cobertura: misture as nozes-pecã, o açúcar mascavo escuro e a canela da cobertura.",
+            "step-3-1": "Despeje metade da massa na fôrma e espalhe metade da mistura de nozes.",
+            "step-3-2": "Acrescente o restante da massa, espalhe o resto da mistura por cima e pressione levemente."
           }
         },
         {
           "title": "Cozimento",
           "steps": {
-            "step-1-0": "Despeje a massa em 1 fôrma de bolo inglês levemente untada.",
+            "step-1-0": "Sem a cobertura, despeje toda a massa na fôrma.",
             "step-1-1": "Asse por 45 a 60 min, até que o centro esteja firme e uma lâmina de faca ou um palito saia limpo ou quase limpo.",
             "step-1-2": "Deixe esfriar 10 min na fôrma e depois desenforme sobre uma grade."
           }
@@ -48,14 +128,6 @@
           "title": "Conservação",
           "steps": {
             "step-2-0": "Este banana bread pode ser congelado muito bem."
-          }
-        },
-        {
-          "title": "Cobertura crocante de nozes (opcional)",
-          "steps": {
-            "step-3-0": "Misture 60 g de nozes-pecã picadas, 2 colheres (sopa) de açúcar mascavo escuro e 1/2 colher (chá) de canela.",
-            "step-3-1": "Despeje metade da massa na fôrma e espalhe uma parte da mistura de nozes.",
-            "step-3-2": "Acrescente o restante da massa, espalhe o resto da mistura por cima e pressione levemente."
           }
         }
       ],
@@ -72,34 +144,114 @@
       "totalTime": "1 h 05 à 1 h 20",
       "timeLabel": "1 h 05 à 1 h 20",
       "temperature": "175 °C",
-      "equipment": ["1 cakevorm"],
+      "equipment": [
+        "1 kookpot",
+        "2 kommen",
+        "1 garde",
+        "1 spatel",
+        "1 cakevorm"
+      ],
       "notes": [],
       "ingredients": {
-        "ingredient-main-0": { "name": "witte suiker", "quantity": "150", "unit": "g", "notes": "" },
-        "ingredient-main-1": { "name": "boter", "quantity": "115", "unit": "g", "notes": "zacht" },
-        "ingredient-main-2": { "name": "goed rijpe bananen", "quantity": "325 à 350", "unit": "g", "notes": "geplet, ongeveer 3 à 4 bananen, afhankelijk van de grootte" },
-        "ingredient-main-3": { "name": "eieren", "quantity": "2", "unit": "", "notes": "goed losgeklopt" },
-        "ingredient-main-4": { "name": "bloem (T45)", "quantity": "150", "unit": "g", "notes": "" },
-        "ingredient-main-5": { "name": "zuiveringszout", "quantity": "1", "unit": "kl", "notes": "" },
-        "ingredient-main-6": { "name": "zout", "quantity": "3", "unit": "g", "notes": "" },
-        "ingredient-main-7": { "name": "gehakte pecannoten", "quantity": "40", "unit": "g", "notes": "" },
-        "ingredient-main-8": { "name": "kaneel", "quantity": "1", "unit": "snufje", "notes": "" }
+        "ingredient-main-0": {
+          "name": "witte suiker",
+          "quantity": "150",
+          "unit": "g",
+          "notes": ""
+        },
+        "ingredient-main-1": {
+          "name": "boter",
+          "quantity": "115",
+          "unit": "g",
+          "notes": "gesmolten"
+        },
+        "ingredient-main-2": {
+          "name": "goed rijpe bananen",
+          "quantity": "325 à 350",
+          "unit": "g",
+          "notes": "geplet, ongeveer 3 à 4 bananen, afhankelijk van de grootte"
+        },
+        "ingredient-main-3": {
+          "name": "eieren",
+          "quantity": "2",
+          "unit": "",
+          "notes": "goed losgeklopt"
+        },
+        "ingredient-main-4": {
+          "name": "bloem (T45)",
+          "quantity": "150",
+          "unit": "g",
+          "notes": ""
+        },
+        "ingredient-main-5": {
+          "name": "zuiveringszout",
+          "quantity": "1",
+          "unit": "kl",
+          "notes": ""
+        },
+        "ingredient-main-6": {
+          "name": "zout",
+          "quantity": "3",
+          "unit": "g",
+          "notes": ""
+        },
+        "ingredient-main-7": {
+          "name": "gehakte pecannoten",
+          "quantity": "40",
+          "unit": "g",
+          "notes": ""
+        },
+        "ingredient-main-8": {
+          "name": "kaneel",
+          "quantity": "1",
+          "unit": "snufje",
+          "notes": ""
+        },
+        "ingredient-main-9": {
+          "name": "gehakte pecannoten",
+          "quantity": "60",
+          "unit": "g",
+          "notes": "voor de optionele topping"
+        },
+        "ingredient-main-10": {
+          "name": "donkere basterdsuiker",
+          "quantity": "2",
+          "unit": "el",
+          "notes": "voor de optionele topping"
+        },
+        "ingredient-main-11": {
+          "name": "kaneel",
+          "quantity": "1/2",
+          "unit": "kl",
+          "notes": "voor de optionele topping"
+        }
       },
       "sections": [
         {
           "title": "Bereiding",
           "steps": {
-            "step-0-0": "Verwarm de oven voor op 175 °C.",
-            "step-0-1": "Klop de zachte boter met de suiker tot een licht, luchtig en schuimig mengsel.",
-            "step-0-2": "Voeg de geplette bananen en de losgeklopte eieren toe en meng tot een glad deeg.",
-            "step-0-3": "Meng in een andere kom de bloem T45, het zuiveringszout en het zout. Zeef de droge ingrediënten bij voorkeur een paar keer en spatel ze dan door het bananenmengsel zonder het deeg te veel te bewerken.",
-            "step-0-4": "Spatel de gehakte pecannoten en het snufje kaneel door het deeg."
+            "step-0-0": "Verwarm de oven voor op 175 °C en vet de cakevorm licht in.",
+            "step-0-5": "Smelt de boter in een kookpot op een zacht vuur en laat ze van het vuur wat afkoelen.",
+            "step-0-3": "Meng terwijl de boter smelt in een eerste kom de bloem, het zuiveringszout, het zout en de kaneel. Zeef dit mengsel bij voorkeur.",
+            "step-0-6": "Plet de bananen met een vork.",
+            "step-0-1": "Giet de lauwe gesmolten boter in een tweede, grotere kom. Voeg de suiker toe en klop tot een glad mengsel.",
+            "step-0-2": "Voeg de losgeklopte eieren en daarna de geplette bananen toe en meng tot een glad beslag.",
+            "step-0-7": "Giet de inhoud van de eerste kom in de grote kom en spatel net tot er geen droge bloem meer te zien is. Werk het beslag niet te veel.",
+            "step-0-4": "Spatel de gehakte pecannoten erdoor."
+          }
+        },
+        {
+          "title": "Krokante notentopping (optioneel)",
+          "steps": {
+            "step-3-0": "Als je de topping maakt: meng de pecannoten, de donkere basterdsuiker en de kaneel voor de topping.",
+            "step-3-1": "Giet de helft van het beslag in de vorm en strooi de helft van het notenmengsel erover.",
+            "step-3-2": "Voeg de rest van het beslag toe, strooi de rest van het mengsel erover en druk lichtjes aan."
           }
         },
         {
           "title": "Bakken",
           "steps": {
-            "step-1-0": "Giet het deeg in 1 licht ingevette cakevorm.",
+            "step-1-0": "Zonder topping giet je al het beslag in de vorm.",
             "step-1-1": "Bak 45 à 60 min, tot het midden stevig is en een mes of een tandenstoker er schoon of bijna schoon uitkomt.",
             "step-1-2": "Laat 10 min afkoelen in de vorm en stort dan op een rooster."
           }
@@ -108,14 +260,6 @@
           "title": "Bewaren",
           "steps": {
             "step-2-0": "Dit bananenbrood kun je heel goed invriezen."
-          }
-        },
-        {
-          "title": "Krokante notentopping (optioneel)",
-          "steps": {
-            "step-3-0": "Meng 60 g gehakte pecannoten, 2 el donkere basterdsuiker en 1/2 kl kaneel.",
-            "step-3-1": "Giet de helft van het deeg in de vorm en strooi er een deel van het notenmengsel over.",
-            "step-3-2": "Voeg de rest van het deeg toe, strooi de rest van het mengsel erover en druk lichtjes aan."
           }
         }
       ],

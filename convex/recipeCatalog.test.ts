@@ -254,41 +254,24 @@ describe("bilingual recipe catalog", () => {
       ),
     ).toEqual([
       { name: "sucre blanc", quantity: "150", unit: "g", notes: "" },
-      { name: "beurre", quantity: "115", unit: "g", notes: "ramolli" },
-      {
-        name: "bananes bien mûres",
-        quantity: "325 à 350",
-        unit: "g",
-        notes: "écrasées, environ 3 à 4 bananes selon leur taille",
-      },
+      { name: "beurre", quantity: "115", unit: "g", notes: "fondu" },
+      { name: "bananes bien mûres", quantity: "325 à 350", unit: "g", notes: "écrasées, environ 3 à 4 bananes selon leur taille" },
       { name: "œufs", quantity: "2", unit: "", notes: "bien battus" },
       { name: "farine T45", quantity: "150", unit: "g", notes: "" },
-      {
-        name: "bicarbonate de soude",
-        quantity: "1",
-        unit: "c. à café",
-        notes: "",
-      },
+      { name: "bicarbonate de soude", quantity: "1", unit: "c. à café", notes: "" },
       { name: "sel", quantity: "3", unit: "g", notes: "" },
-      {
-        name: "noix de pécan hachées",
-        quantity: "40",
-        unit: "g",
-        notes: "",
-      },
-      {
-        name: "cannelle",
-        quantity: "1",
-        unit: "pincée",
-        notes: "",
-      },
+      { name: "noix de pécan hachées", quantity: "40", unit: "g", notes: "" },
+      { name: "cannelle", quantity: "1", unit: "pincée", notes: "" },
+      { name: "noix de pécan hachées", quantity: "60", unit: "g", notes: "pour la garniture facultative" },
+      { name: "cassonade foncée", quantity: "2", unit: "c. à soupe", notes: "pour la garniture facultative" },
+      { name: "cannelle", quantity: "1/2", unit: "c. à café", notes: "pour la garniture facultative" },
     ]);
     expect(seeded.translations.fr.subRecipes).toEqual([]);
     expect(seeded.translations.fr.sections.map(({ title }) => title)).toEqual([
       "Préparation",
+      "Garniture croustillante aux noix (facultative)",
       "Cuisson",
       "Conservation",
-      "Garniture croustillante aux noix (facultative)",
     ]);
 
     expect(seeded.translations.en).toMatchObject({
@@ -302,54 +285,45 @@ describe("bilingual recipe catalog", () => {
       ),
     ).toEqual([
       { name: "white sugar", quantity: "150", unit: "g", notes: "" },
-      { name: "butter", quantity: "115", unit: "g", notes: "softened" },
-      {
-        name: "very ripe bananas",
-        quantity: "325 to 350",
-        unit: "g",
-        notes: "mashed, about 3 to 4 bananas depending on their size",
-      },
+      { name: "butter", quantity: "115", unit: "g", notes: "melted" },
+      { name: "very ripe bananas", quantity: "325 to 350", unit: "g", notes: "mashed, about 3 to 4 bananas depending on their size" },
       { name: "eggs", quantity: "2", unit: "", notes: "well beaten" },
       { name: "T45 flour", quantity: "150", unit: "g", notes: "" },
       { name: "baking soda", quantity: "1", unit: "tsp", notes: "" },
       { name: "salt", quantity: "3", unit: "g", notes: "" },
-      {
-        name: "chopped pecans",
-        quantity: "40",
-        unit: "g",
-        notes: "",
-      },
-      {
-        name: "cinnamon",
-        quantity: "1",
-        unit: "pinch",
-        notes: "",
-      },
+      { name: "chopped pecans", quantity: "40", unit: "g", notes: "" },
+      { name: "cinnamon", quantity: "1", unit: "pinch", notes: "" },
+      { name: "chopped pecans", quantity: "60", unit: "g", notes: "for the optional topping" },
+      { name: "dark brown sugar", quantity: "2", unit: "tbsp", notes: "for the optional topping" },
+      { name: "cinnamon", quantity: "1/2", unit: "tsp", notes: "for the optional topping" },
     ]);
     expect(seeded.translations.en.subRecipes).toEqual([]);
     expect(seeded.translations.en.sections.map(({ title }) => title)).toEqual([
       "Preparation",
+      "Crunchy Pecan Topping (Optional)",
       "Baking",
       "Storage",
-      "Crunchy Pecan Topping (Optional)",
     ]);
     expect(
       seeded.translations.en.sections.flatMap(({ steps }) =>
         steps.map(({ text }) => text),
       ),
     ).toEqual([
-      "Preheat the oven to 175 °C.",
-      "Beat the softened butter and sugar until light and fluffy.",
-      "Add the mashed bananas and beaten eggs, then mix until smooth.",
-      "In another bowl, combine the T45 flour, baking soda and salt. Sift the dry ingredients, ideally several times, then fold them into the banana mixture without overmixing.",
-      "Fold the chopped pecans and pinch of cinnamon into the batter.",
-      "Pour the batter into 1 lightly greased loaf pan.",
+      "Preheat the oven to 175 °C and lightly grease the loaf pan.",
+      "Melt the butter in a saucepan over low heat, then let it cool slightly off the heat.",
+      "While the butter melts, combine the flour, baking soda, salt and cinnamon in a first bowl. Ideally, sift this mixture.",
+      "Mash the bananas with a fork.",
+      "Pour the warm melted butter into a second, larger bowl. Add the sugar and whisk until smooth.",
+      "Add the beaten eggs, then the mashed bananas, and mix until smooth.",
+      "Add the contents of the first bowl to the large bowl and fold with a spatula just until no dry flour remains. Do not overmix.",
+      "Fold in the chopped pecans.",
+      "If making the topping: mix the topping pecans, dark brown sugar and cinnamon.",
+      "Pour half the batter into the pan and sprinkle with half the pecan mixture.",
+      "Add the remaining batter, sprinkle the rest of the mixture on top and press it in lightly.",
+      "Without the topping, pour all the batter into the pan.",
       "Bake for 45 to 60 min, until the center is firm and a knife or toothpick inserted into it comes out clean or almost clean.",
       "Let cool in the pan for 10 min, then unmold onto a rack.",
       "This banana bread freezes very well.",
-      "Mix 60 g chopped pecans, 2 tbsp dark brown sugar and 1/2 tsp cinnamon.",
-      "Pour half the batter into the pan and sprinkle with some of the pecan mixture.",
-      "Add the remaining batter, sprinkle the rest of the pecan mixture on top and press it in lightly.",
     ]);
   });
 
