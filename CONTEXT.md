@@ -46,7 +46,7 @@ Expérience publique et focalisée qui accompagne la préparation d’une Recett
 _Avoid_: Tutoriel, assistant de recette, lecteur pas-à-pas
 
 **Étagère**:
-Façon de parcourir le carnet public où chaque Recette est présentée comme un livre rangé : une seule Recette est ouverte à la fois et en montre un aperçu, les autres ne laissent voir que leur dos.
+Façon de parcourir le carnet public où chaque Recette est présentée comme un livre rangé : une seule Recette est sortie de l’étagère à la fois et se présente par sa couverture ou par un aperçu, les autres ne laissent voir que leur dos.
 Le livre n’est qu’une représentation visuelle d’une Recette, pas une notion éditoriale distincte.
 _Avoid_: Bibliothèque, Cover Flow, carrousel, livre de recette
 

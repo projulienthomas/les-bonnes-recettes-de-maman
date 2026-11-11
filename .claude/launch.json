@@ -4,17 +4,38 @@
     {
       "name": "dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "start"],
+      "runtimeArgs": [
+        "run",
+        "start"
+      ],
       "autoPort": true,
       "port": 3000
     },
     {
       "name": "dev-e2e",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "env": { "RECIPE_ADMIN_E2E": "1" },
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "env": {
+        "RECIPE_ADMIN_E2E": "1"
+      },
       "autoPort": true,
       "port": 3100
+    },
+    {
+      "name": "dev-live",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "3200"
+      ],
+      "autoPort": true,
+      "port": 3200
     }
   ]
 }

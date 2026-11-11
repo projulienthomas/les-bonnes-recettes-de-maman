@@ -12,6 +12,8 @@
     oklch(0 0 0 / 0.26)
   );
   color: var(--spine-fg);
+  /* Spines lift on hover and give under the press, on top of the motion transform. */
+  transition: translate 160ms cubic-bezier(0.23, 1, 0.32, 1), scale 120ms ease-out;
 }
 
 .spine::before,
@@ -30,11 +32,6 @@
 
 .spine::after {
   bottom: 40px;
-}
-
-/* Spines lift on hover and give under the press, on top of the motion transform. */
-.spine {
-  transition: translate 160ms cubic-bezier(0.23, 1, 0.32, 1), scale 120ms ease-out;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -70,6 +67,8 @@
 
 .spineTitle {
   writing-mode: vertical-rl;
+  /* Every glyph lies along the spine, typographic apostrophes included. */
+  text-orientation: sideways;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -78,11 +77,6 @@
 /* French, Brazilian and Belgian shelves read bottom to top. */
 .bottomToTop {
   transform: rotate(180deg);
-}
-
-.cover {
-  background-color: var(--spine-bg);
-  color: var(--spine-fg);
 }
 
 .face {
@@ -97,4 +91,197 @@
     color-mix(in oklch, var(--muted) 70%, var(--border))
   );
   box-shadow: 0 10px 18px -12px oklch(0 0 0 / 0.45);
+}
+
+/* ── Open book ─────────────────────────────────────────────────────────────
+   A book interior is always paper with dark ink, whatever the site theme, so
+   the light tokens are re-declared for everything printed on its pages. */
+.book {
+  --paper: oklch(0.975 0.012 86);
+  --paper-shade: oklch(0.945 0.016 82);
+  --paper-edge: oklch(0.80 0.024 76);
+  --foreground: oklch(0.233 0.007 67.456);
+  --muted-foreground: oklch(0.470 0.014 67.487);
+  --primary: oklch(0.404 0.120 11.39);
+  --primary-foreground: oklch(0.987 0.010 76.6);
+  --ring: oklch(0.404 0.120 11.39);
+  color: var(--foreground);
+}
+
+:global(.dark) .book {
+  --paper: oklch(0.88 0.016 84);
+  --paper-shade: oklch(0.85 0.018 80);
+  --paper-edge: oklch(0.70 0.022 76);
+}
+
+/* Hardcover board: cloth over card, slightly larger than the page block. */
+.board {
+  background-color: var(--spine-bg);
+  background-image:
+    linear-gradient(180deg, oklch(1 0 0 / 0.08), transparent 30%, oklch(0 0 0 / 0.12)),
+    repeating-linear-gradient(45deg, oklch(1 0 0 / 0.025) 0 1px, transparent 1px 3px);
+  box-shadow:
+    inset 0 0 0 1px oklch(0 0 0 / 0.18),
+    0 24px 36px -22px oklch(0 0 0 / 0.6);
+}
+
+/* Match the dimmed spines without a filter, which would flatten the 3D book. */
+:global(.dark) .board {
+  background-image:
+    linear-gradient(oklch(0 0 0 / 0.2), oklch(0 0 0 / 0.2)),
+    linear-gradient(180deg, oklch(1 0 0 / 0.06), transparent 30%, oklch(0 0 0 / 0.12)),
+    repeating-linear-gradient(45deg, oklch(1 0 0 / 0.02) 0 1px, transparent 1px 3px);
+}
+
+/* The hinge groove pressed into a hardcover, next to the spine. */
+.hinge {
+  background: linear-gradient(
+    90deg,
+    oklch(0 0 0 / 0.28),
+    oklch(1 0 0 / 0.12) 45%,
+    oklch(0 0 0 / 0.18)
+  );
+}
+
+/* The top sheet of a page block; the shadows under it are the sheets beneath. */
+.sheet {
+  background-color: var(--paper);
+}
+
+.sheetRight {
+  background-image:
+    linear-gradient(90deg, oklch(0.25 0.03 55 / 0.26) 0, oklch(0.25 0.03 55 / 0.09) 4%, transparent 13%),
+    linear-gradient(90deg, transparent 82%, var(--paper-shade));
+  box-shadow:
+    1px 1px 0 var(--paper-edge),
+    2px 2px 0 var(--paper),
+    3px 2px 0 var(--paper-edge),
+    4px 3px 0 var(--paper),
+    5px 4px 0 var(--paper-edge),
+    6px 4px 0 var(--paper),
+    7px 5px 0 var(--paper-edge),
+    8px 6px 0 var(--paper),
+    9px 7px 0 var(--paper-edge),
+    10px 8px 0 var(--paper),
+    11px 8px 0 var(--paper-edge),
+    13px 11px 10px -6px oklch(0 0 0 / 0.35);
+}
+
+.sheetLeft {
+  background-image:
+    linear-gradient(270deg, oklch(0.25 0.03 55 / 0.26) 0, oklch(0.25 0.03 55 / 0.09) 4%, transparent 13%),
+    linear-gradient(270deg, transparent 82%, var(--paper-shade));
+  box-shadow:
+    -1px 1px 0 var(--paper-edge),
+    -2px 2px 0 var(--paper),
+    -3px 2px 0 var(--paper-edge),
+    -4px 3px 0 var(--paper),
+    -5px 4px 0 var(--paper-edge),
+    -6px 4px 0 var(--paper),
+    -7px 5px 0 var(--paper-edge),
+    -8px 6px 0 var(--paper),
+    -9px 7px 0 var(--paper-edge),
+    -10px 8px 0 var(--paper),
+    -11px 8px 0 var(--paper-edge),
+    -13px 11px 10px -6px oklch(0 0 0 / 0.35);
+}
+
+/* A photo printed on the page: a thin plate line and a little ink depth. */
+.plate {
+  box-shadow:
+    0 0 0 1px oklch(0.25 0.03 55 / 0.14),
+    0 1px 2px oklch(0.25 0.03 55 / 0.18);
+}
+
+.folio {
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: 0.08em;
+}
+
+/* ── Front cover ───────────────────────────────────────────────────────────
+   Book cloth over board: a fine linen weave and grain, a soft key light from
+   the top left, a vignette, and bevelled edges catching that light. */
+.coverCloth {
+  --cloth-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-color: var(--spine-bg);
+  background-image:
+    linear-gradient(128deg, oklch(1 0 0 / 0.2) 0%, oklch(1 0 0 / 0.06) 26%, transparent 48%, oklch(0 0 0 / 0.16) 100%),
+    radial-gradient(130% 95% at 38% 30%, transparent 52%, oklch(0 0 0 / 0.24) 100%),
+    var(--cloth-grain),
+    repeating-linear-gradient(0deg, oklch(1 0 0 / 0.045) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, oklch(0 0 0 / 0.05) 0 1px, transparent 1px 3px);
+  box-shadow:
+    inset 1px 1px 0 oklch(1 0 0 / 0.28),
+    inset -1px -1px 0 oklch(0 0 0 / 0.32),
+    inset 0 0 0 1px oklch(0 0 0 / 0.12),
+    inset 0 0 18px oklch(0 0 0 / 0.12);
+  color: var(--spine-fg);
+}
+
+:global(.dark) .coverCloth {
+  background-image:
+    linear-gradient(oklch(0 0 0 / 0.18), oklch(0 0 0 / 0.18)),
+    linear-gradient(128deg, oklch(1 0 0 / 0.14) 0%, oklch(1 0 0 / 0.04) 26%, transparent 48%, oklch(0 0 0 / 0.16) 100%),
+    radial-gradient(130% 95% at 38% 30%, transparent 52%, oklch(0 0 0 / 0.26) 100%),
+    var(--cloth-grain),
+    repeating-linear-gradient(0deg, oklch(1 0 0 / 0.035) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, oklch(0 0 0 / 0.05) 0 1px, transparent 1px 3px);
+}
+
+/* A blind-stamped double rule pressed into the cloth. */
+.coverRule {
+  border: 1px solid color-mix(in oklch, currentColor 38%, transparent);
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.14),
+    inset 0 1px 0 oklch(0 0 0 / 0.28);
+}
+
+.coverRule::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid color-mix(in oklch, currentColor 22%, transparent);
+  border-radius: 1px;
+}
+
+/* Title stamped into the board: lit lower lip, shaded upper lip. */
+.coverTitle {
+  text-shadow:
+    0 1px 0 oklch(1 0 0 / 0.22),
+    0 -1px 0 oklch(0 0 0 / 0.38);
+}
+
+/* The photo is a print tipped onto the cloth: a paper border and a lifted edge. */
+.coverPrint {
+  background: oklch(0.96 0.014 86);
+  box-shadow:
+    0 0 0 1px oklch(0 0 0 / 0.12),
+    0 1px 1px oklch(0 0 0 / 0.22),
+    0 6px 12px -6px oklch(0 0 0 / 0.5);
+}
+
+.coverPrint::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, oklch(1 0 0 / 0.22), transparent 38%, transparent 70%, oklch(0 0 0 / 0.1));
+}
+
+.bookShadow {
+  background: radial-gradient(50% 50% at 50% 50%, oklch(0 0 0 / 0.38), transparent 70%);
+  filter: blur(6px);
+}
+
+/* The other faces of the closed volume, seen while it turns. */
+.foreEdge {
+  background-color: oklch(0.93 0.02 84);
+  background-image:
+    linear-gradient(90deg, oklch(0 0 0 / 0.2), oklch(0 0 0 / 0.04) 40%, oklch(0 0 0 / 0.14)),
+    repeating-linear-gradient(90deg, transparent 0 1px, oklch(0.72 0.03 76 / 0.55) 1px 2px);
+}
+
+.backBoard {
+  background-color: var(--spine-bg);
+  background-image: linear-gradient(oklch(0 0 0 / 0.3), oklch(0 0 0 / 0.3));
 }
