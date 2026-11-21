@@ -1,6 +1,6 @@
 "use client";
 
-import { type ChangeEvent, type FormEvent, useMemo, useState } from "react";
+import { type ChangeEvent, type FormEvent, useMemo, useRef, useState } from "react";
 import {
   ArrowDownAZ,
   ArrowUpAZ,
@@ -13,10 +13,12 @@ import {
   X,
 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
+import { useDebouncer } from "@tanstack/react-pacer";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 import { RECIPE_CATEGORIES, type RecipeCategory } from "@/lib/recipe-categories";
+import { matchesSearchQuery, normalizeSearchText } from "@/lib/recipe-search";
 import { Button } from "@/components/ui/button";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -32,6 +34,7 @@ const viewValues = ["cards", "list", "shelf"] as const;
 const viewIcons = { cards: LayoutGrid, list: List, shelf: LibraryBig } as const;
 const sortValues = ["alpha", "date"] as const;
 const sortDirectionValues = ["asc", "desc"] as const;
+const searchDebounceMs = 250;
 const activeToggleClassName =
   "aria-pressed:bg-primary aria-pressed:text-primary-foreground aria-pressed:shadow-sm aria-pressed:hover:bg-primary/90";
 
@@ -63,9 +66,10 @@ export function RecipeListExplorer({
   const activeView = getActiveView(searchParams);
   const activeSort = getActiveSort(searchParams);
   const activeSortDirection = getActiveSortDirection(searchParams, activeSort);
-  const [draftState, setDraftState] = useState({ query, value: query });
+  // The draft holds while the URL query is one it was typed against.
+  const [draftState, setDraftState] = useState({ queries: [query], value: query });
   const [searchOpen, setSearchOpen] = useState(query.length > 0);
-  const draftQuery = draftState.query === query ? draftState.value : query;
+  const draftQuery = draftState.queries.includes(query) ? draftState.value : query;
 
   const filteredRecipes = useMemo(
     () => sortRecipes(
@@ -78,20 +82,39 @@ export function RecipeListExplorer({
   );
   const hasActiveFilters = query.length > 0 || activeCategories.length > 0;
 
-  function submitSearch(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  // The query this search box last wrote to the URL. One search is one history
+  // entry: the first change pushes, later ones replace it, so Back returns to
+  // the list as it was before typing.
+  const typedQuery = useRef<string | null>(null);
+
+  function commitQuery(value: string) {
+    const nextQuery = value.trim();
+    if (nextQuery === query) return;
+    // Keep the typed value (trailing space included) once the URL catches up.
+    setDraftState({ queries: [query, nextQuery], value });
     updateUrl({
-      query: draftQuery.trim(),
+      query: nextQuery,
       categories: activeCategories,
       view: activeView,
       sort: activeSort,
       direction: activeSortDirection,
-      mode: "push",
+      mode: typedQuery.current === query ? "replace" : "push",
     });
+    typedQuery.current = nextQuery;
+  }
+
+  // Filter while typing.
+  const searchDebouncer = useDebouncer(commitQuery, { wait: searchDebounceMs });
+
+  function submitSearch(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    searchDebouncer.cancel();
+    commitQuery(draftQuery);
   }
 
   function resetFilters() {
-    setDraftState({ query: "", value: "" });
+    searchDebouncer.cancel();
+    setDraftState({ queries: [""], value: "" });
     updateUrl({
       query: "",
       categories: [],
@@ -163,7 +186,7 @@ export function RecipeListExplorer({
             ))}
           </ToggleGroup>
 
-          <div className="flex min-w-0 items-center justify-between gap-2 xl:justify-end">
+          <div className="flex min-w-0 flex-wrap items-center justify-between gap-x-2 gap-y-1 xl:justify-end">
             <div className="flex shrink-0 items-center gap-1.5 whitespace-nowrap text-muted-foreground">
               <span aria-live="polite" className="type-meta">
                 {formatResultCount(dict, filteredRecipes.length, recipes.length)}
@@ -176,7 +199,7 @@ export function RecipeListExplorer({
               ) : null}
             </div>
 
-            <div className="flex items-center gap-1.5">
+            <div className="ml-auto flex items-center gap-1.5">
               <div className="md:hidden">
                 <RecipeCreationChooser locale={locale} dict={dict} trigger="icon" />
               </div>
@@ -287,8 +310,15 @@ export function RecipeListExplorer({
                   autoCapitalize="none"
                   autoCorrect="off"
                   value={draftQuery}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setDraftState({ query, value: event.target.value })}
+                  onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                    setDraftState({
+                      queries: draftState.queries.includes(query)
+                        ? draftState.queries
+                        : [query],
+                      value: event.target.value,
+                    });
+                    searchDebouncer.maybeExecute(event.target.value);
+                  }}
                   className="h-11"
                   placeholder={dict.recipeList.searchPlaceholder}
                   autoFocus
@@ -361,7 +391,7 @@ function filterRecipes(
   return recipes.filter((recipe) => {
     const matchesQuery =
       normalizedQuery.length === 0 ||
-      getRecipeSearchText(recipe).includes(normalizedQuery);
+      matchesSearchQuery(getRecipeSearchText(recipe), normalizedQuery);
     const matchesCategory =
       categories.length === 0 ||
       recipe.categories.some((category) => selectedCategories.has(category));
@@ -391,14 +421,6 @@ function getRecipeSearchText(recipe: RecipeSummary) {
       " ",
     ),
   );
-}
-
-function normalizeSearchText(value: string) {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
 }
 
 function getActiveCategories(searchParams: { getAll: (name: string) => string[] }) {
