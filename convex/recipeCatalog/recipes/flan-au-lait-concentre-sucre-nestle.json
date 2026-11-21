@@ -15,16 +15,16 @@
       "author": "Maman",
       "description": "Flan au lait concentré sucré cuit au bain-marie avec caramel.",
       "yieldLabel": "6 personnes",
-      "prepTime": "20 min",
-      "cookTime": "30 à 45 min",
-      "restTime": "",
-      "totalTime": "50 min à 1 h 05",
-      "timeLabel": "50 min à 1 h 05",
+      "prepTime": "30 min",
+      "cookTime": "45 min",
+      "restTime": "1 nuit au réfrigérateur",
+      "totalTime": "1 h 15 + 1 nuit de repos",
+      "timeLabel": "1 h 15 + 1 nuit de repos",
       "temperature": "170 °C",
       "equipment": [
         "1 moule à cake",
         "1 plat pour bain-marie",
-        "1 poêle"
+        "1 poêle à fond épais"
       ],
       "ingredients": [
         {
@@ -58,10 +58,39 @@
       ],
       "sections": [
         {
-          "title": "Préparation",
+          "title": "Caramel",
           "steps": [
             {
               "id": "step-0-0",
+              "text": "Étaler uniformément les 80 g de sucre dans une poêle à fond épais, sans eau.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-3"
+                }
+              ]
+            },
+            {
+              "id": "step-0-1",
+              "text": "Chauffer à feu vif sans remuer, environ 10 min, jusqu’à ce que le centre devienne liquide et commence à brunir.",
+              "ingredientUses": []
+            },
+            {
+              "id": "step-0-2",
+              "text": "Retirer du feu et faire tourner la poêle, comme pour une crêpe, pour que le sucre resté sur les bords fonde à son tour.",
+              "ingredientUses": []
+            },
+            {
+              "id": "step-0-3",
+              "text": "Dès que tout est liquide, verser le caramel dans le moule à cake et en napper le fond. Il durcit aussitôt, c’est normal.",
+              "ingredientUses": []
+            }
+          ]
+        },
+        {
+          "title": "Appareil à flan",
+          "steps": [
+            {
+              "id": "step-1-0",
               "text": "Casser les œufs.",
               "ingredientUses": [
                 {
@@ -70,7 +99,7 @@
               ]
             },
             {
-              "id": "step-0-1",
+              "id": "step-1-1",
               "text": "Ajouter la boîte de lait concentré sucré Nestlé.",
               "ingredientUses": [
                 {
@@ -79,7 +108,7 @@
               ]
             },
             {
-              "id": "step-0-2",
+              "id": "step-1-2",
               "text": "Avec la boîte vide, mesurer 1 boîte et 1/3 de lait entier.",
               "ingredientUses": [
                 {
@@ -88,75 +117,65 @@
               ]
             },
             {
-              "id": "step-0-3",
+              "id": "step-1-3",
               "text": "Mixer le mélange au mixeur plongeant pendant 5 min.",
               "ingredientUses": []
             },
             {
-              "id": "step-1-1",
-              "text": "Faire le caramel avec le sucre dans la poêle, sans eau.",
-              "ingredientUses": [
-                {
-                  "ingredientId": "ingredient-main-3"
-                }
-              ]
-            },
+              "id": "step-1-4",
+              "text": "Verser doucement le mélange dans le moule, sur le caramel.",
+              "ingredientUses": []
+            }
+          ]
+        },
+        {
+          "title": "Cuisson",
+          "steps": [
             {
-              "id": "step-1-2",
-              "text": "Ne pas remuer.",
+              "id": "step-2-0",
+              "text": "Poser le moule dans un plat et remplir le plat d’eau très chaude. L’eau très chaude du robinet suffit, inutile de la faire bouillir.",
               "ingredientUses": []
             },
             {
-              "id": "step-0-4",
-              "text": "Napper le moule à cake avec le caramel.",
+              "id": "step-2-1",
+              "text": "Cuire au bain-marie 45 min au four préchauffé à 170 °C.",
               "ingredientUses": []
-            },
+            }
+          ]
+        },
+        {
+          "title": "Repos",
+          "steps": [
             {
-              "id": "step-0-5",
-              "text": "Verser le mélange doucement.",
-              "ingredientUses": []
-            },
-            {
-              "id": "step-1-0",
-              "text": "Le bain-marie doit être bouillant au moment de mettre le flan.",
-              "ingredientUses": []
-            },
-            {
-              "id": "step-0-6",
-              "text": "Placer dans un bain-marie au four préchauffé à 170 °C pendant 30 à 45 min.",
-              "ingredientUses": []
-            },
-            {
-              "id": "step-0-7",
-              "text": "Le flan est cuit quand la lame ressort sèche.",
-              "ingredientUses": []
-            },
-            {
-              "id": "step-0-8",
-              "text": "Laisser refroidir, mettre au frigo et démouler au moment de servir.",
+              "id": "step-3-0",
+              "text": "Laisser refroidir, puis mettre au frigo une nuit. Démouler au moment de servir.",
               "ingredientUses": []
             }
           ]
         }
       ],
       "subRecipes": [],
-      "notes": []
+      "notes": [
+        "Le caramel se fait à sec : ni eau ni citron, et on ne remue jamais. Si la plaque ne chauffe pas uniformément, c’est en faisant tourner la poêle hors du feu que le sucre des bords finit de fondre.",
+        "Le caramel durcit comme de la glace dans le moule, puis redevient liquide pendant la nuit au frigo.",
+        "Préparer le flan la veille : il doit être très froid pour bien se démouler."
+      ]
     },
     "en": {
       "title": "Nestlé Sweetened Condensed Milk Flan",
       "author": "Maman",
       "description": "Sweetened condensed milk flan baked in a water bath with caramel.",
       "yieldLabel": "6 people",
-      "prepTime": "20 min",
-      "cookTime": "30 to 45 min",
-      "restTime": "",
-      "totalTime": "50 min to 1 h 05",
-      "timeLabel": "50 min to 1 h 05",
+      "prepTime": "30 min",
+      "cookTime": "45 min",
+      "restTime": "Overnight in the refrigerator",
+      "totalTime": "1 h 15 + overnight rest",
+      "timeLabel": "1 h 15 + overnight rest",
       "temperature": "170 °C",
       "equipment": [
         "1 loaf pan",
         "1 roasting dish for the water bath",
-        "1 frying pan"
+        "1 heavy-bottomed frying pan"
       ],
       "ingredients": [
         {
@@ -190,10 +209,39 @@
       ],
       "sections": [
         {
-          "title": "Preparation",
+          "title": "Caramel",
           "steps": [
             {
               "id": "step-0-0",
+              "text": "Spread the 80 g of sugar evenly in a heavy-bottomed frying pan, without water.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-3"
+                }
+              ]
+            },
+            {
+              "id": "step-0-1",
+              "text": "Heat over high heat without stirring, for about 10 min, until the center turns liquid and starts to brown.",
+              "ingredientUses": []
+            },
+            {
+              "id": "step-0-2",
+              "text": "Take the pan off the heat and swirl it, as you would for a crêpe, so the sugar left around the edges melts too.",
+              "ingredientUses": []
+            },
+            {
+              "id": "step-0-3",
+              "text": "As soon as it is all liquid, pour the caramel into the loaf pan and coat the bottom. It hardens right away, which is normal.",
+              "ingredientUses": []
+            }
+          ]
+        },
+        {
+          "title": "Flan mixture",
+          "steps": [
+            {
+              "id": "step-1-0",
               "text": "Crack the eggs.",
               "ingredientUses": [
                 {
@@ -202,7 +250,7 @@
               ]
             },
             {
-              "id": "step-0-1",
+              "id": "step-1-1",
               "text": "Add the can of Nestlé sweetened condensed milk.",
               "ingredientUses": [
                 {
@@ -211,7 +259,7 @@
               ]
             },
             {
-              "id": "step-0-2",
+              "id": "step-1-2",
               "text": "Using the empty can, measure 1 and 1/3 cans of whole milk.",
               "ingredientUses": [
                 {
@@ -220,59 +268,49 @@
               ]
             },
             {
-              "id": "step-0-3",
+              "id": "step-1-3",
               "text": "Blend the mixture with an immersion blender for 5 min.",
               "ingredientUses": []
             },
             {
-              "id": "step-1-1",
-              "text": "Make the caramel with the sugar in the pan, without water.",
-              "ingredientUses": [
-                {
-                  "ingredientId": "ingredient-main-3"
-                }
-              ]
-            },
+              "id": "step-1-4",
+              "text": "Gently pour the mixture into the loaf pan, over the caramel.",
+              "ingredientUses": []
+            }
+          ]
+        },
+        {
+          "title": "Baking",
+          "steps": [
             {
-              "id": "step-1-2",
-              "text": "Do not stir.",
+              "id": "step-2-0",
+              "text": "Set the loaf pan in a roasting dish and fill the dish with very hot water. Very hot tap water is enough; it does not need to boil.",
               "ingredientUses": []
             },
             {
-              "id": "step-0-4",
-              "text": "Coat the loaf pan with caramel.",
+              "id": "step-2-1",
+              "text": "Bake in the water bath for 45 min in a 170 °C preheated oven.",
               "ingredientUses": []
-            },
+            }
+          ]
+        },
+        {
+          "title": "Resting",
+          "steps": [
             {
-              "id": "step-0-5",
-              "text": "Pour the mixture in gently.",
-              "ingredientUses": []
-            },
-            {
-              "id": "step-1-0",
-              "text": "The water bath should be boiling when the flan goes in.",
-              "ingredientUses": []
-            },
-            {
-              "id": "step-0-6",
-              "text": "Place in a water bath in a 170 °C preheated oven for 30 to 45 min.",
-              "ingredientUses": []
-            },
-            {
-              "id": "step-0-7",
-              "text": "The flan is done when the knife blade comes out dry.",
-              "ingredientUses": []
-            },
-            {
-              "id": "step-0-8",
-              "text": "Let cool, refrigerate, and unmold when ready to serve.",
+              "id": "step-3-0",
+              "text": "Let cool, then refrigerate overnight. Unmold when ready to serve.",
               "ingredientUses": []
             }
           ]
         }
       ],
       "subRecipes": [],
-      "notes": []
+      "notes": [
+        "The caramel is made dry: no water, no lemon, and never stir it. If your hob heats unevenly, swirling the pan off the heat is what melts the sugar left around the edges.",
+        "The caramel sets as hard as ice in the loaf pan, then turns liquid again overnight in the refrigerator.",
+        "Make the flan the day before: it must be very cold to unmold cleanly."
+      ]
     }
   },
   "imageCredit": {
