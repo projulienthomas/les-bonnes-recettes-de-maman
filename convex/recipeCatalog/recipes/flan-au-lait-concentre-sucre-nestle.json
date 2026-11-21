@@ -1,6 +1,6 @@
 {
   "slug": "flan-au-lait-concentre-sucre-nestle",
-  "heroImageUrl": "https://festive-lobster-957.eu-west-1.convex.cloud/api/storage/822f77ad-9c9e-4388-b233-c20bdf81b115",
+  "heroImageUrl": "https://festive-lobster-957.eu-west-1.convex.cloud/api/storage/1e981dd0-d06f-45ca-bbaf-ba6241ec1f3f",
   "defaultLocale": "fr",
   "referenceServings": 6,
   "relatedRecipeSlugs": [],
@@ -312,19 +312,5 @@
         "Make the flan the day before: it must be very cold to unmold cleanly."
       ]
     }
-  },
-  "imageCredit": {
-    "alt": "Flan au caramel rectangulaire démoulé sur une assiette blanche (photo d’illustration).",
-    "attribution": "Leche Flan, Dec 2025 — Ralff Nestor Nacor — CC BY-SA 4.0, via Wikimedia Commons. Version redimensionnée.",
-    "creator": "Ralff Nestor Nacor",
-    "creatorUrl": "https://commons.wikimedia.org/wiki/User:Ralffralff",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/af/Leche_Flan%2C_Dec_2025.jpg",
-    "landingUrl": "https://commons.wikimedia.org/wiki/File:Leche_Flan,_Dec_2025.jpg",
-    "license": "by-sa",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "licenseVersion": "4.0",
-    "provider": "openverse",
-    "source": "wikimedia",
-    "title": "Leche Flan, Dec 2025"
   }
 }
