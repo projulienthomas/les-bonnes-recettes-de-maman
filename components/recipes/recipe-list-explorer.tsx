@@ -1,6 +1,6 @@
 "use client";
 
-import { type ChangeEvent, type FormEvent, useMemo, useState } from "react";
+import { type ChangeEvent, type FormEvent, useMemo, useRef, useState } from "react";
 import {
   ArrowDownAZ,
   ArrowUpAZ,
@@ -82,35 +82,34 @@ export function RecipeListExplorer({
   );
   const hasActiveFilters = query.length > 0 || activeCategories.length > 0;
 
-  // Filter while typing, without adding a history entry per keystroke.
-  const searchDebouncer = useDebouncer(
-    (value: string) => {
-      const nextQuery = value.trim();
-      // Keep the typed value (trailing space included) once the URL catches up.
-      setDraftState({ queries: [query, nextQuery], value });
-      updateUrl({
-        query: nextQuery,
-        categories: activeCategories,
-        view: activeView,
-        sort: activeSort,
-        direction: activeSortDirection,
-        mode: "replace",
-      });
-    },
-    { wait: searchDebounceMs },
-  );
+  // The query this search box last wrote to the URL. One search is one history
+  // entry: the first change pushes, later ones replace it, so Back returns to
+  // the list as it was before typing.
+  const typedQuery = useRef<string | null>(null);
 
-  function submitSearch(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    searchDebouncer.cancel();
+  function commitQuery(value: string) {
+    const nextQuery = value.trim();
+    if (nextQuery === query) return;
+    // Keep the typed value (trailing space included) once the URL catches up.
+    setDraftState({ queries: [query, nextQuery], value });
     updateUrl({
-      query: draftQuery.trim(),
+      query: nextQuery,
       categories: activeCategories,
       view: activeView,
       sort: activeSort,
       direction: activeSortDirection,
-      mode: "push",
+      mode: typedQuery.current === query ? "replace" : "push",
     });
+    typedQuery.current = nextQuery;
+  }
+
+  // Filter while typing.
+  const searchDebouncer = useDebouncer(commitQuery, { wait: searchDebounceMs });
+
+  function submitSearch(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    searchDebouncer.cancel();
+    commitQuery(draftQuery);
   }
 
   function resetFilters() {
