@@ -1,6 +1,6 @@
 {
   "slug": "flan-au-lait-concentre-sucre-nestle",
-  "heroImageUrl": "https://images.unsplash.com/photo-1702728109878-c61a98d80491?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NDIxMjh8MHwxfHNlYXJjaHwxfHxGbGFufGVufDF8MHx8fDE3ODE3OTQzMDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImageUrl": "https://festive-lobster-957.eu-west-1.convex.cloud/api/storage/822f77ad-9c9e-4388-b233-c20bdf81b115",
   "defaultLocale": "fr",
   "referenceServings": 6,
   "relatedRecipeSlugs": [],
@@ -276,10 +276,17 @@
     }
   },
   "imageCredit": {
-    "alt": "a small dessert on a white plate on a wooden table",
-    "photoUrl": "https://unsplash.com/photos/a-small-dessert-on-a-white-plate-on-a-wooden-table-TqPdzQ00I0U?utm_source=les_bonnes_recettes_de_maman&utm_medium=referral",
-    "photographerName": "Felippe Lopes",
-    "photographerUrl": "https://unsplash.com/@pires128?utm_source=les_bonnes_recettes_de_maman&utm_medium=referral",
-    "provider": "unsplash"
+    "alt": "Flan au caramel rectangulaire démoulé sur une assiette blanche (photo d’illustration).",
+    "attribution": "Leche Flan, Dec 2025 — Ralff Nestor Nacor — CC BY-SA 4.0, via Wikimedia Commons. Version redimensionnée.",
+    "creator": "Ralff Nestor Nacor",
+    "creatorUrl": "https://commons.wikimedia.org/wiki/User:Ralffralff",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/af/Leche_Flan%2C_Dec_2025.jpg",
+    "landingUrl": "https://commons.wikimedia.org/wiki/File:Leche_Flan,_Dec_2025.jpg",
+    "license": "by-sa",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "licenseVersion": "4.0",
+    "provider": "openverse",
+    "source": "wikimedia",
+    "title": "Leche Flan, Dec 2025"
   }
 }

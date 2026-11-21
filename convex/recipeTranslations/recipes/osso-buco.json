@@ -7,12 +7,12 @@
       "description": "Osso buco de jarrete de vitela com tomate, cenoura, vinho branco e bouquet garni.",
       "yieldLabel": "4 pessoas",
       "prepTime": "20 min",
-      "cookTime": "45 min",
+      "cookTime": "1 h 30 (45 min na panela de pressão)",
       "restTime": "",
-      "totalTime": "1 h 05",
-      "timeLabel": "1 h 05",
+      "totalTime": "1 h 50",
+      "timeLabel": "1 h 50",
       "temperature": "fogo baixo",
-      "equipment": ["1 panela de pressão"],
+      "equipment": ["1 panela de ferro fundido (tipo Le Creuset) ou, na falta dela, 1 panela de pressão"],
       "notes": [],
       "ingredients": {
         "ingredient-main-0": { "name": "ossobuco de vitela", "quantity": "4", "unit": "fatias", "notes": "cerca de 200 g cada" },
@@ -36,7 +36,7 @@
             "step-0-2": "Junte as cenouras cortadas em rodelas grossas, as cebolas fatiadas e o alho picado.",
             "step-0-3": "Acrescente os tomates e o vinho branco.",
             "step-0-4": "Tempere com sal e pimenta e junte o bouquet garni.",
-            "step-0-5": "Cozinhe por 45 min em fogo baixo depois que a válvula começar a girar."
+            "step-0-5": "Tampe e cozinhe em fogo baixo por cerca de 1 h 30, até a carne ficar macia. Na panela de pressão: 45 min em fogo baixo depois que a válvula começar a girar."
           }
         }
       ],
@@ -48,12 +48,12 @@
       "description": "Osso buco van kalfsschenkel met tomaten, wortelen, witte wijn en bouquet garni.",
       "yieldLabel": "4 personen",
       "prepTime": "20 min",
-      "cookTime": "45 min",
+      "cookTime": "1 u 30 (45 min in de snelkookpan)",
       "restTime": "",
-      "totalTime": "1 h 05",
-      "timeLabel": "1 h 05",
+      "totalTime": "1 h 50",
+      "timeLabel": "1 h 50",
       "temperature": "zacht vuur",
-      "equipment": ["1 snelkookpan"],
+      "equipment": ["1 gietijzeren stoofpot (type Le Creuset), of anders 1 snelkookpan"],
       "notes": [],
       "ingredients": {
         "ingredient-main-0": { "name": "kalfsschenkel", "quantity": "4", "unit": "schijven", "notes": "ongeveer 200 g per stuk" },
@@ -77,7 +77,7 @@
             "step-0-2": "Voeg de in dikke schijfjes gesneden wortelen, de gesnipperde uien en de gehakte look toe.",
             "step-0-3": "Voeg de tomaten en de witte wijn toe.",
             "step-0-4": "Kruid met peper en zout en voeg de bouquet garni toe.",
-            "step-0-5": "Laat 45 min op zacht vuur garen zodra het ventiel begint te draaien."
+            "step-0-5": "Dek af en laat ongeveer 1 u 30 op zacht vuur garen, tot het vlees mals is. In de snelkookpan: 45 min op zacht vuur zodra het ventiel begint te draaien."
           }
         }
       ],
