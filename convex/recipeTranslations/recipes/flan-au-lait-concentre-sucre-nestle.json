@@ -6,14 +6,14 @@
       "author": "Maman",
       "description": "Pudim de leite condensado assado em banho-maria, com calda de caramelo.",
       "yieldLabel": "6 pessoas",
-      "prepTime": "20 min",
-      "cookTime": "30 a 45 min",
-      "restTime": "",
-      "totalTime": "50 min a 1 h 05",
-      "timeLabel": "50 min a 1 h 05",
+      "prepTime": "30 min",
+      "cookTime": "45 min",
+      "restTime": "1 noite na geladeira",
+      "totalTime": "1 h 15 + 1 noite de descanso",
+      "timeLabel": "1 h 15 + 1 noite de descanso",
       "temperature": "170 °C",
-      "equipment": ["1 forma de bolo inglês", "1 assadeira para banho-maria", "1 frigideira"],
-      "notes": [],
+      "equipment": ["1 forma de bolo inglês", "1 assadeira para banho-maria", "1 frigideira de fundo grosso"],
+      "notes": ["O caramelo é feito a seco: sem água, sem limão e sem mexer nunca. Se o fogão não aquece por igual, é girando a frigideira fora do fogo que o açúcar das bordas termina de derreter.", "O caramelo fica duro como gelo na forma e volta a ficar líquido durante a noite na geladeira.", "Prepare o pudim na véspera: ele precisa estar bem gelado para desenformar direito."],
       "ingredients": {
         "ingredient-main-0": { "name": "leite condensado", "quantity": "1", "unit": "lata", "notes": "397 g" },
         "ingredient-main-1": { "name": "ovos", "quantity": "3", "unit": "", "notes": "" },
@@ -22,20 +22,35 @@
       },
       "sections": [
         {
-          "title": "Preparo",
+          "title": "Caramelo",
           "steps": {
-            "step-0-0": "Quebre os ovos.",
-            "step-0-1": "Acrescente a lata de leite condensado Nestlé.",
-            "step-0-2": "Com a lata vazia, meça 1 lata e 1/3 de leite integral.",
-            "step-0-3": "Bata a mistura com o mixer por 5 min.",
-            "step-1-1": "Faça o caramelo com o açúcar na frigideira, sem água.",
-            "step-1-2": "Não mexa.",
-            "step-0-4": "Cubra o fundo e as laterais da forma com o caramelo.",
-            "step-0-5": "Despeje a mistura delicadamente.",
-            "step-1-0": "A água do banho-maria deve estar fervendo quando você colocar o pudim.",
-            "step-0-6": "Leve ao forno preaquecido a 170 °C, em banho-maria, por 30 a 45 min.",
-            "step-0-7": "O pudim está pronto quando a lâmina da faca sair seca.",
-            "step-0-8": "Deixe esfriar, leve à geladeira e desenforme na hora de servir."
+            "step-0-0": "Espalhe os 80 g de açúcar de maneira uniforme em uma frigideira de fundo grosso, sem água.",
+            "step-0-1": "Aqueça em fogo alto sem mexer, por cerca de 10 min, até o centro ficar líquido e começar a dourar.",
+            "step-0-2": "Tire do fogo e gire a frigideira, como se faz com uma panqueca, para que o açúcar que ficou nas bordas também derreta.",
+            "step-0-3": "Assim que tudo estiver líquido, despeje o caramelo na forma de bolo inglês e cubra o fundo. Ele endurece na hora, é normal."
+          }
+        },
+        {
+          "title": "Mistura do pudim",
+          "steps": {
+            "step-1-0": "Quebre os ovos.",
+            "step-1-1": "Acrescente a lata de leite condensado Nestlé.",
+            "step-1-2": "Com a lata vazia, meça 1 lata e 1/3 de leite integral.",
+            "step-1-3": "Bata a mistura com o mixer por 5 min.",
+            "step-1-4": "Despeje a mistura delicadamente na forma, sobre o caramelo."
+          }
+        },
+        {
+          "title": "Forno",
+          "steps": {
+            "step-2-0": "Coloque a forma em uma assadeira e encha a assadeira com água bem quente. A água bem quente da torneira basta, não precisa ferver.",
+            "step-2-1": "Asse em banho-maria por 45 min no forno preaquecido a 170 °C."
+          }
+        },
+        {
+          "title": "Descanso",
+          "steps": {
+            "step-3-0": "Deixe esfriar e leve à geladeira por uma noite. Desenforme na hora de servir."
           }
         }
       ],
@@ -46,14 +61,14 @@
       "author": "Maman",
       "description": "Flan met gezoete gecondenseerde melk, au bain-marie gegaard, met karamel.",
       "yieldLabel": "6 personen",
-      "prepTime": "20 min",
-      "cookTime": "30 à 45 min",
-      "restTime": "",
-      "totalTime": "50 min à 1 h 05",
-      "timeLabel": "50 min à 1 h 05",
+      "prepTime": "30 min",
+      "cookTime": "45 min",
+      "restTime": "1 nacht in de koelkast",
+      "totalTime": "1 h 15 + 1 nacht rusten",
+      "timeLabel": "1 h 15 + 1 nacht rusten",
       "temperature": "170 °C",
-      "equipment": ["1 cakevorm", "1 schaal voor het bain-marie", "1 koekenpan"],
-      "notes": [],
+      "equipment": ["1 cakevorm", "1 schaal voor het bain-marie", "1 koekenpan met dikke bodem"],
+      "notes": ["De karamel maak je droog: geen water, geen citroen en nooit roeren. Verwarmt je kookplaat niet gelijkmatig, dan smelt de suiker aan de randen door de pan van het vuur te laten ronddraaien.", "De karamel wordt keihard in de vorm en wordt tijdens de nacht in de koelkast opnieuw vloeibaar.", "Maak de flan een dag vooraf: hij moet heel koud zijn om goed uit de vorm te komen."],
       "ingredients": {
         "ingredient-main-0": { "name": "gezoete gecondenseerde melk", "quantity": "1", "unit": "blik", "notes": "397 g" },
         "ingredient-main-1": { "name": "eieren", "quantity": "3", "unit": "", "notes": "" },
@@ -62,20 +77,35 @@
       },
       "sections": [
         {
-          "title": "Bereiding",
+          "title": "Karamel",
           "steps": {
-            "step-0-0": "Breek de eieren.",
-            "step-0-1": "Voeg het blik gezoete gecondenseerde melk van Nestlé toe.",
-            "step-0-2": "Meet met het lege blik 1 1/3 blik volle melk af.",
-            "step-0-3": "Mix het mengsel 5 min met de staafmixer.",
-            "step-1-1": "Maak de karamel met de suiker in de pan, zonder water.",
-            "step-1-2": "Niet roeren.",
-            "step-0-4": "Bedek de bodem en de wanden van de cakevorm met de karamel.",
-            "step-0-5": "Giet het mengsel er voorzichtig in.",
-            "step-1-0": "Het water van het bain-marie moet koken als je de flan erin zet.",
-            "step-0-6": "Zet au bain-marie 30 à 45 min in de op 170 °C voorverwarmde oven.",
-            "step-0-7": "De flan is gaar als een mes er droog uitkomt.",
-            "step-0-8": "Laat afkoelen, zet in de koelkast en stort de flan pas uit de vorm bij het opdienen."
+            "step-0-0": "Verdeel de 80 g suiker gelijkmatig in een koekenpan met dikke bodem, zonder water.",
+            "step-0-1": "Verhit op hoog vuur zonder te roeren, ongeveer 10 min, tot het midden vloeibaar wordt en begint te kleuren.",
+            "step-0-2": "Neem de pan van het vuur en laat ze ronddraaien, zoals bij een pannenkoek, zodat ook de suiker aan de randen smelt.",
+            "step-0-3": "Giet de karamel in de cakevorm zodra alles vloeibaar is en bedek de bodem. Hij wordt meteen hard, dat is normaal."
+          }
+        },
+        {
+          "title": "Flanmengsel",
+          "steps": {
+            "step-1-0": "Breek de eieren.",
+            "step-1-1": "Voeg het blik gezoete gecondenseerde melk van Nestlé toe.",
+            "step-1-2": "Meet met het lege blik 1 1/3 blik volle melk af.",
+            "step-1-3": "Mix het mengsel 5 min met de staafmixer.",
+            "step-1-4": "Giet het mengsel voorzichtig in de vorm, op de karamel."
+          }
+        },
+        {
+          "title": "Bakken",
+          "steps": {
+            "step-2-0": "Zet de vorm in een schaal en vul de schaal met heel warm water. Heel warm kraanwater volstaat, het hoeft niet te koken.",
+            "step-2-1": "Bak au bain-marie 45 min in de op 170 °C voorverwarmde oven."
+          }
+        },
+        {
+          "title": "Laten rusten",
+          "steps": {
+            "step-3-0": "Laat afkoelen en zet daarna een nacht in de koelkast. Stort de flan pas uit de vorm bij het opdienen."
           }
         }
       ],
