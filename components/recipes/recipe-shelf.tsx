@@ -434,7 +434,7 @@ export function RecipeShelf({ locale, dict, recipes }: RecipeShelfProps) {
         onPointerUp={onPointerEnd}
         onPointerCancel={onPointerEnd}
         className={cn(
-          "relative -mx-4 touch-pan-y select-none overflow-hidden px-4 pt-6 pb-5 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:mx-0 md:rounded-3xl md:px-0",
+          "relative -mx-3 touch-pan-y select-none overflow-hidden px-3 pt-6 pb-5 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:mx-0 md:rounded-3xl md:px-0",
           isDragging ? "cursor-grabbing" : "cursor-grab",
         )}
         style={{ height: layout.bookHeight + 52 }}

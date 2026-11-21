@@ -187,7 +187,7 @@ export function RecipeListExplorer({
             ))}
           </ToggleGroup>
 
-          <div className="flex min-w-0 items-center justify-between gap-2 xl:justify-end">
+          <div className="flex min-w-0 flex-wrap items-center justify-between gap-x-2 gap-y-1 xl:justify-end">
             <div className="flex shrink-0 items-center gap-1.5 whitespace-nowrap text-muted-foreground">
               <span aria-live="polite" className="type-meta">
                 {formatResultCount(dict, filteredRecipes.length, recipes.length)}
@@ -200,7 +200,7 @@ export function RecipeListExplorer({
               ) : null}
             </div>
 
-            <div className="flex items-center gap-1.5">
+            <div className="ml-auto flex items-center gap-1.5">
               <div className="md:hidden">
                 <RecipeCreationChooser locale={locale} dict={dict} trigger="icon" />
               </div>
