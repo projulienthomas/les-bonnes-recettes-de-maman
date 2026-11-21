@@ -18,13 +18,13 @@
       "description": "Osso buco de jarret de veau aux tomates, carottes, vin blanc et bouquet garni.",
       "yieldLabel": "4 personnes",
       "prepTime": "20 min",
-      "cookTime": "45 min",
+      "cookTime": "1 h 30 (45 min en cocotte-minute)",
       "restTime": "",
-      "totalTime": "1 h 05",
-      "timeLabel": "1 h 05",
+      "totalTime": "1 h 50",
+      "timeLabel": "1 h 50",
       "temperature": "feu doux",
       "equipment": [
-        "1 cocotte-minute"
+        "1 cocotte en fonte (type Le Creuset), ou à défaut 1 cocotte-minute"
       ],
       "ingredients": [
         {
@@ -174,7 +174,7 @@
             },
             {
               "id": "step-0-5",
-              "text": "Cuire 45 min à feu doux après rotation de la soupape.",
+              "text": "Couvrir et cuire à feu doux environ 1 h 30, jusqu’à ce que la viande soit fondante. En cocotte-minute : 45 min à feu doux après rotation de la soupape.",
               "ingredientUses": []
             }
           ]
@@ -189,13 +189,13 @@
       "description": "Veal shank osso buco with tomatoes, carrots, white wine and a bouquet garni.",
       "yieldLabel": "4 people",
       "prepTime": "20 min",
-      "cookTime": "45 min",
+      "cookTime": "1 h 30 (45 min in a pressure cooker)",
       "restTime": "",
-      "totalTime": "1 h 05",
-      "timeLabel": "1 h 05",
+      "totalTime": "1 h 50",
+      "timeLabel": "1 h 50",
       "temperature": "low heat",
       "equipment": [
-        "1 pressure cooker"
+        "1 cast-iron Dutch oven (such as Le Creuset), or failing that 1 pressure cooker"
       ],
       "ingredients": [
         {
@@ -345,7 +345,7 @@
             },
             {
               "id": "step-0-5",
-              "text": "Cook over low heat for 45 min after the pressure valve turns.",
+              "text": "Cover and cook over low heat for about 1 h 30, until the meat is tender. In a pressure cooker: 45 min over low heat after the pressure valve turns.",
               "ingredientUses": []
             }
           ]
