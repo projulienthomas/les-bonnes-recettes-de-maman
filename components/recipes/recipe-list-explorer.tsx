@@ -71,6 +71,12 @@ export function RecipeListExplorer({
   const [searchOpen, setSearchOpen] = useState(query.length > 0);
   const draftQuery = draftState.queries.includes(query) ? draftState.value : query;
 
+  // Once the URL has caught up with a commit, forget the query it replaced:
+  // going back to it must show that query, not the text typed after it.
+  if (draftState.queries.length > 1 && draftState.queries.at(-1) === query) {
+    setDraftState({ queries: [query], value: draftState.value });
+  }
+
   const filteredRecipes = useMemo(
     () => sortRecipes(
       filterRecipes(recipes, query, activeCategories),
