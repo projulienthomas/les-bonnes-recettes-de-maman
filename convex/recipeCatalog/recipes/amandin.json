@@ -107,9 +107,6 @@
               "ingredientUses": [
                 {
                   "ingredientId": "ingredient-main-1"
-                },
-                {
-                  "ingredientId": "ingredient-main-2"
                 }
               ]
             }
@@ -249,9 +246,6 @@
               "ingredientUses": [
                 {
                   "ingredientId": "ingredient-main-1"
-                },
-                {
-                  "ingredientId": "ingredient-main-2"
                 }
               ]
             }
