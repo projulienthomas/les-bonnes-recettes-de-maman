@@ -36,9 +36,10 @@ import recipe33 from "./recipes/sauce-bolognaise.json";
 import recipe34 from "./recipes/smoothie-banane-et-fruits-rouges.json";
 import recipe35 from "./recipes/soupe-de-champagne.json";
 import recipe36 from "./recipes/tarte-aux-amandes-et-confiture-de-framboises.json";
-import recipe37 from "./recipes/tiramisu.json";
-import recipe38 from "./recipes/vacherin.json";
-import recipe39 from "./recipes/veloute-de-courgettes.json";
+import recipe37 from "./recipes/tartiflette.json";
+import recipe38 from "./recipes/tiramisu.json";
+import recipe39 from "./recipes/vacherin.json";
+import recipe40 from "./recipes/veloute-de-courgettes.json";
 
 export const rawRecipeCatalog = {
   "amandin": {
@@ -189,16 +190,20 @@ export const rawRecipeCatalog = {
     sourcePath: "./recipes/tarte-aux-amandes-et-confiture-de-framboises.json",
     recipe: recipe36,
   },
+  "tartiflette": {
+    sourcePath: "./recipes/tartiflette.json",
+    recipe: recipe37,
+  },
   "tiramisu": {
     sourcePath: "./recipes/tiramisu.json",
-    recipe: recipe37,
+    recipe: recipe38,
   },
   "vacherin": {
     sourcePath: "./recipes/vacherin.json",
-    recipe: recipe38,
+    recipe: recipe39,
   },
   "veloute-de-courgettes": {
     sourcePath: "./recipes/veloute-de-courgettes.json",
-    recipe: recipe39,
+    recipe: recipe40,
   },
 } as const;

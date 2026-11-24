@@ -39,10 +39,11 @@ import translation35 from "./recipes/smoothie-banane-et-fruits-rouges.json";
 import translation36 from "./recipes/soupe-de-champagne.json";
 import translation37 from "./recipes/taboule.json";
 import translation38 from "./recipes/tarte-aux-amandes-et-confiture-de-framboises.json";
-import translation39 from "./recipes/tiramisu.json";
-import translation40 from "./recipes/vacherin.json";
-import translation41 from "./recipes/veloute-de-courgettes.json";
-import translation42 from "./recipes/vinaigrette.json";
+import translation39 from "./recipes/tartiflette.json";
+import translation40 from "./recipes/tiramisu.json";
+import translation41 from "./recipes/vacherin.json";
+import translation42 from "./recipes/veloute-de-courgettes.json";
+import translation43 from "./recipes/vinaigrette.json";
 
 // Shapes are checked field by field when translations are applied.
 const file = (value: unknown) => value as RecipeTranslationFile;
@@ -87,8 +88,9 @@ export const recipeTranslationFiles: Record<string, RecipeTranslationFile> = {
   "soupe-de-champagne": file(translation36),
   "taboule": file(translation37),
   "tarte-aux-amandes-et-confiture-de-framboises": file(translation38),
-  "tiramisu": file(translation39),
-  "vacherin": file(translation40),
-  "veloute-de-courgettes": file(translation41),
-  "vinaigrette": file(translation42),
+  "tartiflette": file(translation39),
+  "tiramisu": file(translation40),
+  "vacherin": file(translation41),
+  "veloute-de-courgettes": file(translation42),
+  "vinaigrette": file(translation43),
 };

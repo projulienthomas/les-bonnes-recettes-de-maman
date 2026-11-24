@@ -1,0 +1,490 @@
+{
+  "slug": "tartiflette",
+  "heroImageUrl": "https://festive-lobster-957.eu-west-1.convex.cloud/api/storage/baab0979-b7a5-48b2-aa3e-cb89746810f1",
+  "defaultLocale": "fr",
+  "referenceServings": 6,
+  "relatedRecipeSlugs": [],
+  "categories": [
+    "plat",
+    "sale"
+  ],
+  "legacyCategoryLabels": [],
+  "translations": {
+    "fr": {
+      "title": "Tartiflette",
+      "author": "Maman",
+      "description": "Tartiflette au reblochon, pommes de terre, oignons et lardons fumés, gratinée au four.",
+      "yieldLabel": "6 personnes",
+      "prepTime": "40 min",
+      "cookTime": "30 min",
+      "restTime": "",
+      "totalTime": "1 h 10",
+      "timeLabel": "1 h 10",
+      "temperature": "200 °C",
+      "equipment": [
+        "1 casserole",
+        "1 poêle",
+        "1 plat à gratin"
+      ],
+      "ingredients": [
+        {
+          "name": "pommes de terre",
+          "quantity": "1,5",
+          "unit": "kg",
+          "notes": "à chair ferme",
+          "id": "ingredient-main-0"
+        },
+        {
+          "name": "reblochon",
+          "quantity": "500",
+          "unit": "g",
+          "notes": "",
+          "id": "ingredient-main-1"
+        },
+        {
+          "name": "lardons fumés",
+          "quantity": "200",
+          "unit": "g",
+          "notes": "ou du jambon cru",
+          "id": "ingredient-main-2"
+        },
+        {
+          "name": "gros oignon",
+          "quantity": "1",
+          "unit": "",
+          "notes": "ou 2 moyens",
+          "id": "ingredient-main-3"
+        },
+        {
+          "name": "vin blanc sec",
+          "quantity": "1",
+          "unit": "verre",
+          "notes": "facultatif",
+          "id": "ingredient-main-4"
+        },
+        {
+          "name": "crème fraîche épaisse",
+          "quantity": "100",
+          "unit": "g",
+          "notes": "",
+          "id": "ingredient-main-5"
+        },
+        {
+          "name": "poivre blanc",
+          "quantity": "",
+          "unit": "",
+          "notes": "",
+          "id": "ingredient-main-6"
+        },
+        {
+          "name": "muscade",
+          "quantity": "1",
+          "unit": "pincée",
+          "notes": "",
+          "id": "ingredient-main-7"
+        },
+        {
+          "name": "beurre",
+          "quantity": "",
+          "unit": "",
+          "notes": "pour le plat",
+          "id": "ingredient-main-8"
+        },
+        {
+          "name": "sel",
+          "quantity": "",
+          "unit": "",
+          "notes": "très peu, et uniquement si les pommes de terre n’ont pas été cuites dans l’eau salée",
+          "id": "ingredient-main-9"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Préparation",
+          "steps": [
+            {
+              "id": "step-0-0",
+              "text": "Cuire les pommes de terre, pas trop, pour qu’elles restent fermes.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-0"
+                }
+              ]
+            },
+            {
+              "id": "step-0-1",
+              "text": "Faire revenir les oignons pelés et émincés (enlever le germe).",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-3"
+                }
+              ]
+            },
+            {
+              "id": "step-0-2",
+              "text": "Lorsqu’ils deviennent translucides, ajouter les lardons. Poursuivre la cuisson pour que lardons et oignons soient dorés.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-2"
+                }
+              ]
+            },
+            {
+              "id": "step-0-3",
+              "text": "Déglacer la poêle avec le vin blanc et poursuivre la cuisson 5 minutes.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-4"
+                }
+              ]
+            },
+            {
+              "id": "step-0-4",
+              "text": "Préchauffer le four à 200 °C.",
+              "ingredientUses": []
+            },
+            {
+              "id": "step-0-5",
+              "text": "Couper les pommes de terre en grosses rondelles.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-0"
+                }
+              ]
+            },
+            {
+              "id": "step-0-6",
+              "text": "Couper le reblochon en deux horizontalement.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Montage",
+          "steps": [
+            {
+              "id": "step-1-0",
+              "text": "Beurrer un plat à gratin.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-8"
+                }
+              ]
+            },
+            {
+              "id": "step-1-1",
+              "text": "Répartir les pommes de terre dans le plat, mélangées avec un peu de crème fraîche, le poivre, la muscade et un peu de sel (très peu, et uniquement si les pommes de terre n’ont pas été cuites dans l’eau salée).",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-0"
+                },
+                {
+                  "ingredientId": "ingredient-main-5"
+                },
+                {
+                  "ingredientId": "ingredient-main-6"
+                },
+                {
+                  "ingredientId": "ingredient-main-7"
+                },
+                {
+                  "ingredientId": "ingredient-main-9"
+                }
+              ]
+            },
+            {
+              "id": "step-1-2",
+              "text": "Ajouter les oignons et les lardons.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-3"
+                },
+                {
+                  "ingredientId": "ingredient-main-2"
+                }
+              ]
+            },
+            {
+              "id": "step-1-3",
+              "text": "Recouvrir du reste de crème fraîche, puis du reblochon, croûte vers le haut.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-5"
+                },
+                {
+                  "ingredientId": "ingredient-main-1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Cuisson",
+          "steps": [
+            {
+              "id": "step-2-0",
+              "text": "Mettre au four 30 minutes, jusqu’à ce que le reblochon forme une croûte bien dorée et gratinée.",
+              "ingredientUses": []
+            },
+            {
+              "id": "step-2-1",
+              "text": "Servir la tartiflette accompagnée d’une belle salade verte et d’un verre de vin blanc de Savoie.",
+              "ingredientUses": []
+            }
+          ]
+        }
+      ],
+      "subRecipes": [],
+      "notes": []
+    },
+    "en": {
+      "title": "Tartiflette",
+      "author": "Maman",
+      "description": "Tartiflette with Reblochon cheese, potatoes, onions and smoked bacon lardons, baked until golden.",
+      "yieldLabel": "6 people",
+      "prepTime": "40 min",
+      "cookTime": "30 min",
+      "restTime": "",
+      "totalTime": "1 h 10",
+      "timeLabel": "1 h 10",
+      "temperature": "200 °C",
+      "equipment": [
+        "1 saucepan",
+        "1 frying pan",
+        "1 gratin dish"
+      ],
+      "ingredients": [
+        {
+          "name": "potatoes",
+          "quantity": "1.5",
+          "unit": "kg",
+          "notes": "waxy",
+          "id": "ingredient-main-0"
+        },
+        {
+          "name": "Reblochon cheese",
+          "quantity": "500",
+          "unit": "g",
+          "notes": "",
+          "id": "ingredient-main-1"
+        },
+        {
+          "name": "smoked bacon lardons",
+          "quantity": "200",
+          "unit": "g",
+          "notes": "or cured ham",
+          "id": "ingredient-main-2"
+        },
+        {
+          "name": "large onion",
+          "quantity": "1",
+          "unit": "",
+          "notes": "or 2 medium",
+          "id": "ingredient-main-3"
+        },
+        {
+          "name": "dry white wine",
+          "quantity": "1",
+          "unit": "glass",
+          "notes": "optional",
+          "id": "ingredient-main-4"
+        },
+        {
+          "name": "thick crème fraîche",
+          "quantity": "100",
+          "unit": "g",
+          "notes": "",
+          "id": "ingredient-main-5"
+        },
+        {
+          "name": "white pepper",
+          "quantity": "",
+          "unit": "",
+          "notes": "",
+          "id": "ingredient-main-6"
+        },
+        {
+          "name": "nutmeg",
+          "quantity": "1",
+          "unit": "pinch",
+          "notes": "",
+          "id": "ingredient-main-7"
+        },
+        {
+          "name": "butter",
+          "quantity": "",
+          "unit": "",
+          "notes": "for the dish",
+          "id": "ingredient-main-8"
+        },
+        {
+          "name": "salt",
+          "quantity": "",
+          "unit": "",
+          "notes": "very little, and only if the potatoes were not cooked in salted water",
+          "id": "ingredient-main-9"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Preparation",
+          "steps": [
+            {
+              "id": "step-0-0",
+              "text": "Cook the potatoes, but not too much, so that they stay firm.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-0"
+                }
+              ]
+            },
+            {
+              "id": "step-0-1",
+              "text": "Peel and slice the onions (remove the germ), then fry them gently.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-3"
+                }
+              ]
+            },
+            {
+              "id": "step-0-2",
+              "text": "When they turn translucent, add the lardons. Keep cooking until the lardons and onions are golden.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-2"
+                }
+              ]
+            },
+            {
+              "id": "step-0-3",
+              "text": "Deglaze the pan with the white wine and cook for another 5 minutes.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-4"
+                }
+              ]
+            },
+            {
+              "id": "step-0-4",
+              "text": "Preheat the oven to 200 °C.",
+              "ingredientUses": []
+            },
+            {
+              "id": "step-0-5",
+              "text": "Cut the potatoes into thick slices.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-0"
+                }
+              ]
+            },
+            {
+              "id": "step-0-6",
+              "text": "Cut the Reblochon in half horizontally.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Assembly",
+          "steps": [
+            {
+              "id": "step-1-0",
+              "text": "Butter a gratin dish.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-8"
+                }
+              ]
+            },
+            {
+              "id": "step-1-1",
+              "text": "Spread the potatoes in the dish, mixed with a little crème fraîche, the pepper, the nutmeg and a little salt (very little, and only if the potatoes were not cooked in salted water).",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-0"
+                },
+                {
+                  "ingredientId": "ingredient-main-5"
+                },
+                {
+                  "ingredientId": "ingredient-main-6"
+                },
+                {
+                  "ingredientId": "ingredient-main-7"
+                },
+                {
+                  "ingredientId": "ingredient-main-9"
+                }
+              ]
+            },
+            {
+              "id": "step-1-2",
+              "text": "Add the onions and lardons.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-3"
+                },
+                {
+                  "ingredientId": "ingredient-main-2"
+                }
+              ]
+            },
+            {
+              "id": "step-1-3",
+              "text": "Cover with the rest of the crème fraîche, then with the Reblochon, rind side up.",
+              "ingredientUses": [
+                {
+                  "ingredientId": "ingredient-main-5"
+                },
+                {
+                  "ingredientId": "ingredient-main-1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Baking",
+          "steps": [
+            {
+              "id": "step-2-0",
+              "text": "Bake for 30 minutes, until the Reblochon forms a golden, bubbling crust.",
+              "ingredientUses": []
+            },
+            {
+              "id": "step-2-1",
+              "text": "Serve the tartiflette with a nice green salad and a glass of Savoie white wine.",
+              "ingredientUses": []
+            }
+          ]
+        }
+      ],
+      "subRecipes": [],
+      "notes": []
+    }
+  },
+  "imageCredit": {
+    "alt": "Tartiflette gratinée sortie du four, reblochon doré croûte vers le haut (photo d’illustration).",
+    "attribution": "Une tartiflette sortie du four — Benoît Prieur — CC0 1.0, via Wikimedia Commons. Version redimensionnée.",
+    "creator": "Benoît Prieur",
+    "creatorUrl": "https://commons.wikimedia.org/wiki/User:Beno%C3%AEt_Prieur",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Une_tartiflette_sortie_du_four.jpg",
+    "landingUrl": "https://commons.wikimedia.org/wiki/File:Une_tartiflette_sortie_du_four.jpg",
+    "license": "cc0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "licenseVersion": "1.0",
+    "provider": "openverse",
+    "source": "wikimedia",
+    "title": "Une tartiflette sortie du four"
+  }
+}
