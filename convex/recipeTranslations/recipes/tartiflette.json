@@ -1,0 +1,227 @@
+{
+  "slug": "tartiflette",
+  "translations": {
+    "pt-br": {
+      "title": "Tartiflette",
+      "author": "Maman",
+      "description": "Tartiflette com queijo reblochon, batatas, cebola e bacon defumado, gratinada no forno.",
+      "yieldLabel": "6 pessoas",
+      "prepTime": "40 min",
+      "cookTime": "30 min",
+      "restTime": "",
+      "totalTime": "1 h 10",
+      "timeLabel": "1 h 10",
+      "temperature": "200 °C",
+      "equipment": [
+        "1 panela",
+        "1 frigideira",
+        "1 refratário"
+      ],
+      "notes": [],
+      "ingredients": {
+        "ingredient-main-0": {
+          "name": "batatas",
+          "quantity": "1,5",
+          "unit": "kg",
+          "notes": "de polpa firme"
+        },
+        "ingredient-main-1": {
+          "name": "queijo reblochon",
+          "quantity": "500",
+          "unit": "g",
+          "notes": ""
+        },
+        "ingredient-main-2": {
+          "name": "bacon defumado em cubos",
+          "quantity": "200",
+          "unit": "g",
+          "notes": "ou presunto cru"
+        },
+        "ingredient-main-3": {
+          "name": "cebola grande",
+          "quantity": "1",
+          "unit": "",
+          "notes": "ou 2 médias"
+        },
+        "ingredient-main-4": {
+          "name": "vinho branco seco",
+          "quantity": "1",
+          "unit": "copo",
+          "notes": "opcional"
+        },
+        "ingredient-main-5": {
+          "name": "creme de leite fresco espesso",
+          "quantity": "100",
+          "unit": "g",
+          "notes": ""
+        },
+        "ingredient-main-6": {
+          "name": "pimenta-branca",
+          "quantity": "",
+          "unit": "",
+          "notes": ""
+        },
+        "ingredient-main-7": {
+          "name": "noz-moscada",
+          "quantity": "1",
+          "unit": "pitada",
+          "notes": ""
+        },
+        "ingredient-main-8": {
+          "name": "manteiga",
+          "quantity": "",
+          "unit": "",
+          "notes": "para o refratário"
+        },
+        "ingredient-main-9": {
+          "name": "sal",
+          "quantity": "",
+          "unit": "",
+          "notes": "bem pouco, e somente se as batatas não foram cozidas em água com sal"
+        }
+      },
+      "sections": [
+        {
+          "title": "Preparo",
+          "steps": {
+            "step-0-0": "Cozinhe as batatas, mas não demais, para que fiquem firmes.",
+            "step-0-1": "Refogue as cebolas descascadas e fatiadas (retire o germe).",
+            "step-0-2": "Quando ficarem translúcidas, junte o bacon. Continue cozinhando até o bacon e as cebolas dourarem.",
+            "step-0-3": "Deglaceie a frigideira com o vinho branco e cozinhe por mais 5 minutos.",
+            "step-0-4": "Preaqueça o forno a 200 °C.",
+            "step-0-5": "Corte as batatas em rodelas grossas.",
+            "step-0-6": "Corte o reblochon ao meio na horizontal."
+          }
+        },
+        {
+          "title": "Montagem",
+          "steps": {
+            "step-1-0": "Unte um refratário com manteiga.",
+            "step-1-1": "Distribua as batatas no refratário, misturadas com um pouco de creme de leite, a pimenta, a noz-moscada e um pouco de sal (bem pouco, e somente se as batatas não foram cozidas em água com sal).",
+            "step-1-2": "Acrescente as cebolas e o bacon.",
+            "step-1-3": "Cubra com o restante do creme de leite e, por fim, com o reblochon, com a casca para cima."
+          }
+        },
+        {
+          "title": "Forno",
+          "steps": {
+            "step-2-0": "Leve ao forno por 30 minutos, até o reblochon formar uma crosta bem dourada e gratinada.",
+            "step-2-1": "Sirva a tartiflette com uma bela salada verde e uma taça de vinho branco da Saboia."
+          }
+        }
+      ],
+      "subRecipes": []
+    },
+    "nl-be": {
+      "title": "Tartiflette",
+      "author": "Maman",
+      "description": "Tartiflette met reblochon, aardappelen, ui en gerookte spekblokjes, gegratineerd in de oven.",
+      "yieldLabel": "6 personen",
+      "prepTime": "40 min",
+      "cookTime": "30 min",
+      "restTime": "",
+      "totalTime": "1 h 10",
+      "timeLabel": "1 h 10",
+      "temperature": "200 °C",
+      "equipment": [
+        "1 kookpot",
+        "1 pan",
+        "1 ovenschotel"
+      ],
+      "notes": [],
+      "ingredients": {
+        "ingredient-main-0": {
+          "name": "aardappelen",
+          "quantity": "1,5",
+          "unit": "kg",
+          "notes": "vastkokend"
+        },
+        "ingredient-main-1": {
+          "name": "reblochon",
+          "quantity": "500",
+          "unit": "g",
+          "notes": ""
+        },
+        "ingredient-main-2": {
+          "name": "gerookte spekblokjes",
+          "quantity": "200",
+          "unit": "g",
+          "notes": "of rauwe ham"
+        },
+        "ingredient-main-3": {
+          "name": "grote ui",
+          "quantity": "1",
+          "unit": "",
+          "notes": "of 2 middelgrote"
+        },
+        "ingredient-main-4": {
+          "name": "droge witte wijn",
+          "quantity": "1",
+          "unit": "glas",
+          "notes": "naar keuze"
+        },
+        "ingredient-main-5": {
+          "name": "dikke room (crème fraîche)",
+          "quantity": "100",
+          "unit": "g",
+          "notes": ""
+        },
+        "ingredient-main-6": {
+          "name": "witte peper",
+          "quantity": "",
+          "unit": "",
+          "notes": ""
+        },
+        "ingredient-main-7": {
+          "name": "nootmuskaat",
+          "quantity": "1",
+          "unit": "snuifje",
+          "notes": ""
+        },
+        "ingredient-main-8": {
+          "name": "boter",
+          "quantity": "",
+          "unit": "",
+          "notes": "voor de schotel"
+        },
+        "ingredient-main-9": {
+          "name": "zout",
+          "quantity": "",
+          "unit": "",
+          "notes": "heel weinig, en alleen als de aardappelen niet in gezouten water gekookt zijn"
+        }
+      },
+      "sections": [
+        {
+          "title": "Bereiding",
+          "steps": {
+            "step-0-0": "Kook de aardappelen, maar niet te gaar, zodat ze stevig blijven.",
+            "step-0-1": "Stoof de gepelde en gesnipperde uien aan (verwijder de kiem).",
+            "step-0-2": "Voeg de spekblokjes toe zodra de uien glazig zijn. Bak verder tot de spekblokjes en de uien goudbruin zijn.",
+            "step-0-3": "Blus de pan met de witte wijn en laat nog 5 minuten garen.",
+            "step-0-4": "Verwarm de oven voor op 200 °C.",
+            "step-0-5": "Snijd de aardappelen in dikke schijven.",
+            "step-0-6": "Snijd de reblochon horizontaal doormidden."
+          }
+        },
+        {
+          "title": "Opbouw",
+          "steps": {
+            "step-1-0": "Beboter een ovenschotel.",
+            "step-1-1": "Verdeel de aardappelen in de schotel, gemengd met een beetje room, de peper, de nootmuskaat en een beetje zout (heel weinig, en alleen als de aardappelen niet in gezouten water gekookt zijn).",
+            "step-1-2": "Voeg de uien en de spekblokjes toe.",
+            "step-1-3": "Bedek met de rest van de room en tot slot met de reblochon, met de korst naar boven."
+          }
+        },
+        {
+          "title": "Bakken",
+          "steps": {
+            "step-2-0": "Zet 30 minuten in de oven, tot de reblochon een mooi goudbruine, gegratineerde korst vormt.",
+            "step-2-1": "Serveer de tartiflette met een mooie groene salade en een glas witte wijn uit de Savoie."
+          }
+        }
+      ],
+      "subRecipes": []
+    }
+  }
+}
