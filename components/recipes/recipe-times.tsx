@@ -20,7 +20,24 @@ export type RecipeTimeEntry = {
   value: string;
 };
 
-/** Prep, cook and total times of a card, leaving out the ones that are empty. */
+const durationEnd = /\b(?:min|h|u)\b(?:\s*\d{1,2}\b(?!\s*(?:min|h|u)\b))?/gi;
+
+/**
+ * Keeps the durations of a free-text time and drops the commentary around
+ * them, so a card shows « 1 h 20 à 1 h 25 » and leaves « , hors
+ * refroidissement » to the recipe page. A rest given without a duration
+ * (« + 1 nuit de repos ») stays visible as a trailing « + ».
+ */
+export function shortenRecipeTime(value: string) {
+  const text = value.replace(/\s*\([^)]*\)/g, "").split(",")[0].trim();
+  const last = [...text.matchAll(durationEnd)].at(-1);
+  if (!last) return text;
+  const end = last.index + last[0].length;
+  const dropped = text.slice(end).trim();
+  return dropped.startsWith("+") ? `${text.slice(0, end)} +` : text.slice(0, end);
+}
+
+/** Prep, cook and total times of a card, shortened, leaving out the empty ones. */
 export function getRecipeCardTimes(
   dict: Dictionary,
   recipe: Pick<RecipeSummary, "prepTime" | "cookTime" | "timeLabel" | "totalTime">,
@@ -35,7 +52,9 @@ export function getRecipeCardTimes(
       value: recipe.totalTime || recipe.timeLabel,
     },
   ];
-  return entries.filter((entry) => entry.value?.trim());
+  return entries
+    .filter((entry) => entry.value?.trim())
+    .map((entry) => ({ ...entry, value: shortenRecipeTime(entry.value) }));
 }
 
 /** Every timing value of the recipe page, leaving out the ones that are empty. */

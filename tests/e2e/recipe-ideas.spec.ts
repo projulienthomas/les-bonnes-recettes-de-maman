@@ -39,11 +39,11 @@ test("a visitor can publish, edit, and delete a recipe idea", async ({ page }, t
 test("the public header chooser exposes both creation paths", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop");
   await page.goto("/en");
-  await page.getByRole("button", { name: "New recipe" }).click();
+  await page.getByRole("button", { name: "New recipe", exact: true }).click();
   await expect(page.getByRole("link", { name: /Write the full recipe/ })).toHaveAttribute("href", "/en/admin/recettes?new=1");
   await expect(page.getByRole("link", { name: /Leave an idea/ })).toHaveAttribute("href", "/en/idees#nouvelle-idee");
   await page.keyboard.press("Escape");
-  await expect(page.getByRole("button", { name: "New recipe" })).toBeFocused();
+  await expect(page.getByRole("button", { name: "New recipe", exact: true })).toBeFocused();
 
   const cardTrigger = page.locator("main").getByRole("button", {
     name: /Add a recipe/,

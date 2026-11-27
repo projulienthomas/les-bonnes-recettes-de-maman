@@ -78,8 +78,8 @@ test("recipe editor exposes protected comment moderation", async ({ page }) => {
     });
   });
   await page.goto("/fr/admin/recettes?slug=tarte-de-demonstration");
-  await page.getByRole("button", { name: /Retour à la recette/ }).click();
-  await page.getByRole("button", { name: /Commentaires/ }).click();
+  await page.getByRole("button", { name: "Autres actions" }).click();
+  await page.getByRole("menuitem", { name: "Commentaires" }).click();
   await expect(page.getByRole("heading", { name: "Commentaires de la recette" })).toBeVisible();
   await expect(page.getByText("Très bonne recette.")).toBeVisible();
   await page.getByRole("button", { name: "Supprimer" }).click();

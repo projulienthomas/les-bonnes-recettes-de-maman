@@ -15,6 +15,8 @@ test("shadcn migration keeps the key recipe surfaces stable", async ({ page }, t
   await page.goto("/fr/recettes/amandin");
   const comments = page.getByRole("heading", { name: "Commentaires", exact: true }).locator("xpath=ancestor::section");
   await expect(comments).toBeVisible();
+  // Capture the loaded section, not the loading placeholders.
+  await expect(comments.locator('[data-slot="skeleton"]')).toHaveCount(0);
   await expect(comments).toHaveScreenshot("recipe-comments.png", { animations: "disabled", maxDiffPixelRatio: 0.02 });
 
   await page.goto("/fr/recettes/amandin/cuisiner");
