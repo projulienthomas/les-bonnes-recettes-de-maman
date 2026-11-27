@@ -1012,6 +1012,7 @@ async function localizeSummary(
     description: translation.description,
     prepTime: translation.prepTime,
     cookTime: translation.cookTime,
+    totalTime: translation.totalTime,
     timeLabel: translation.timeLabel,
     commentCount: (recipeMakeSummary?.makeCount ?? commentSummary?.commentCount ?? 0),
     ingredients: translation.ingredients.map(({ name }) => ({ name })),

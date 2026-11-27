@@ -174,20 +174,29 @@ test("mobile recipe cards do not highlight a partial cooking time", async ({ pag
   await expect(recipeLink.getByText(/Cook ·/)).toHaveCount(0);
 });
 
-test("mobile cookbook exposes an aligned create shortcut beside search", async ({ page }, testInfo) => {
+test("mobile cookbook exposes an aligned create shortcut beside the view toggles", async ({ page }, testInfo) => {
   test.skip(!testInfo.project.name.startsWith("mobile-"));
   await page.goto("/fr");
 
   const controls = page.getByRole("region", { name: "Recherche et filtres des recettes" });
   const createButton = controls.getByRole("button", { name: "Ajouter une recette" });
-  const searchButton = page.getByRole("button", { name: "Rechercher une recette" });
+  const cardsView = controls.getByRole("button", { name: "Vue cartes" });
+  const searchbox = controls.getByRole("searchbox", { name: "Rechercher une recette" });
 
-  const createBox = await createButton.boundingBox();
-  const searchBox = await searchButton.boundingBox();
+  const [createBox, cardsBox, searchBox, controlsBox] = await Promise.all([
+    createButton.boundingBox(),
+    cardsView.boundingBox(),
+    searchbox.boundingBox(),
+    controls.boundingBox(),
+  ]);
   expect(createBox?.width).toBe(44);
   expect(createBox?.height).toBe(44);
-  expect(searchBox?.y).toBeCloseTo(createBox?.y ?? 0, 0);
-  expect((searchBox?.x ?? 0) - ((createBox?.x ?? 0) + (createBox?.width ?? 0))).toBe(8);
+  const centerY = (box: { y: number; height: number } | null) =>
+    (box?.y ?? 0) + (box?.height ?? 0) / 2;
+  expect(centerY(cardsBox)).toBeCloseTo(centerY(createBox), 0);
+  // The search field has a whole row, first in the filters.
+  expect(searchBox?.y).toBeLessThan(createBox?.y ?? 0);
+  expect(searchBox?.width).toBeGreaterThan((controlsBox?.width ?? 0) * 0.8);
 
   await createButton.click();
   await expect(page.getByRole("dialog")).toBeVisible();
@@ -272,6 +281,38 @@ test("mobile recipe back link sits above the hero image", async ({ page }, testI
 
   expect(backBox?.height).toBeGreaterThanOrEqual(44);
   expect((backBox?.y ?? 0) + (backBox?.height ?? 0)).toBeLessThanOrEqual(imageBox?.y ?? 0);
+});
+
+test("recipe times sit under the title, before the description and actions", async ({ page }) => {
+  await page.goto("/fr/recettes/tarte-de-demonstration");
+
+  const times = page.locator("[data-recipe-times]");
+  await expect(times).toHaveCount(1);
+  await expect(times.getByText("Temps total", { exact: true })).toBeVisible();
+  const [titleBox, timesBox, descriptionBox] = await Promise.all([
+    page.getByRole("heading", { level: 1 }).boundingBox(),
+    times.boundingBox(),
+    page.locator("main header .type-editorial-lead").boundingBox(),
+  ]);
+  expect(timesBox?.y).toBeGreaterThan(titleBox?.y ?? 0);
+  expect(timesBox?.y).toBeLessThan(descriptionBox?.y ?? 0);
+});
+
+test("recipe back link returns to the list as it was left", async ({ page }) => {
+  await page.goto("/fr?q=tarte#recettes");
+  await page.locator('main a[href="/fr/recettes/tarte-de-demonstration"]').first().click();
+  await expect(page).toHaveURL(/\/fr\/recettes\/tarte-de-demonstration/);
+
+  await page.getByRole("link", { name: "Retour à la liste des recettes" }).click();
+  await expect(page).toHaveURL(/\/fr\?q=tarte/);
+  await expect(page.getByRole("searchbox", { name: "Rechercher une recette" })).toHaveValue("tarte");
+});
+
+test("recipe back link falls back to the list link on a direct visit", async ({ page }) => {
+  await page.goto("/fr/recettes/tarte-de-demonstration");
+
+  await expect(page.getByRole("link", { name: "Retour à la liste des recettes" }))
+    .toHaveAttribute("href", "/fr#recettes");
 });
 
 test("desktop recipe body keeps a compact ingredient panel", async ({ page }, testInfo) => {

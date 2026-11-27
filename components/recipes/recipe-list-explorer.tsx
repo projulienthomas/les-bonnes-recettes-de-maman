@@ -1,6 +1,6 @@
 "use client";
 
-import { type ChangeEvent, type FormEvent, useMemo, useRef, useState } from "react";
+import { type ChangeEvent, type FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowDownAZ,
   ArrowUpAZ,
@@ -19,6 +19,7 @@ import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 import { RECIPE_CATEGORIES, type RecipeCategory } from "@/lib/recipe-categories";
 import { matchesSearchQuery, normalizeSearchText } from "@/lib/recipe-search";
+import { markLeavingRecipeList, rememberRecipeListUrl } from "@/lib/recipe-list-return";
 import { Button } from "@/components/ui/button";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -68,7 +69,6 @@ export function RecipeListExplorer({
   const activeSortDirection = getActiveSortDirection(searchParams, activeSort);
   // The draft holds while the URL query is one it was typed against.
   const [draftState, setDraftState] = useState({ queries: [query], value: query });
-  const [searchOpen, setSearchOpen] = useState(query.length > 0);
   const draftQuery = draftState.queries.includes(query) ? draftState.value : query;
 
   // Once the URL has caught up with a commit, forget the query it replaced:
@@ -76,6 +76,13 @@ export function RecipeListExplorer({
   if (draftState.queries.length > 1 && draftState.queries.at(-1) === query) {
     setDraftState({ queries: [query], value: draftState.value });
   }
+
+  // Lets a recipe page opened from here return to the list as it was left.
+  const listSearch = searchParams.toString();
+  useEffect(() => {
+    rememberRecipeListUrl(listSearch ? `/${locale}?${listSearch}` : `/${locale}`);
+    return () => markLeavingRecipeList();
+  }, [listSearch, locale]);
 
   const filteredRecipes = useMemo(
     () => sortRecipes(
@@ -162,6 +169,36 @@ export function RecipeListExplorer({
         aria-label={dict.recipeList.filtersLabel}
         className="grid gap-3 border-b border-border pb-3 md:pb-4"
       >
+        <form role="search" onSubmit={submitSearch} className="w-full">
+          <label className="sr-only" htmlFor="recipe-search">
+            {dict.recipeList.searchLabel}
+          </label>
+          <InputGroup className="h-12 bg-card">
+            <InputGroupAddon><Search aria-hidden /></InputGroupAddon>
+            <InputGroupInput
+              id="recipe-search"
+              name="q"
+              type="search"
+              enterKeyHint="search"
+              autoComplete="off"
+              autoCapitalize="none"
+              autoCorrect="off"
+              value={draftQuery}
+              onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                setDraftState({
+                  queries: draftState.queries.includes(query)
+                    ? draftState.queries
+                    : [query],
+                  value: event.target.value,
+                });
+                searchDebouncer.maybeExecute(event.target.value);
+              }}
+              className="h-12 md:h-12"
+              placeholder={dict.recipeList.searchPlaceholder}
+            />
+          </InputGroup>
+        </form>
+
         <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
           <ToggleGroup
             multiple
@@ -209,22 +246,6 @@ export function RecipeListExplorer({
               <div className="md:hidden">
                 <RecipeCreationChooser locale={locale} dict={dict} trigger="icon" />
               </div>
-              <button
-                type="button"
-                aria-expanded={searchOpen}
-                aria-controls="recipe-search-controls"
-                aria-label={searchOpen
-                  ? dict.recipeList.closeSearch
-                  : dict.recipeList.searchLabel}
-                onClick={() => setSearchOpen((open) => !open)}
-                className="inline-flex size-10 items-center justify-center rounded-full text-foreground transition-[background-color,scale] duration-150 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-[0.96]"
-              >
-                <span aria-hidden className="relative size-5">
-                  <Search className={cn("absolute inset-0 size-5 stroke-[1.8] transition-[scale,opacity,filter] duration-300 [transition-timing-function:cubic-bezier(0.2,0,0,1)]", searchOpen ? "scale-[0.25] opacity-0 blur-[4px]" : "scale-100 opacity-100 blur-0")} />
-                  <X className={cn("absolute inset-0 size-5 stroke-[1.8] transition-[scale,opacity,filter] duration-300 [transition-timing-function:cubic-bezier(0.2,0,0,1)]", searchOpen ? "scale-100 opacity-100 blur-0" : "scale-[0.25] opacity-0 blur-[4px]")} />
-                </span>
-              </button>
-
               <span aria-hidden className="mx-1 hidden h-6 w-px bg-border md:block" />
 
               <ToggleGroup
@@ -299,44 +320,6 @@ export function RecipeListExplorer({
           </div>
         </div>
 
-        {searchOpen ? (
-          <div id="recipe-search-controls" className="max-w-3xl">
-            <form onSubmit={submitSearch} className="grid gap-2 sm:grid-cols-[1fr_auto]">
-              <label className="sr-only" htmlFor="recipe-search">
-                {dict.recipeList.searchLabel}
-              </label>
-              <InputGroup className="h-11 bg-card">
-                <InputGroupAddon><Search aria-hidden /></InputGroupAddon>
-                <InputGroupInput
-                  id="recipe-search"
-                  name="q"
-                  type="search"
-                  enterKeyHint="search"
-                  autoComplete="off"
-                  autoCapitalize="none"
-                  autoCorrect="off"
-                  value={draftQuery}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                    setDraftState({
-                      queries: draftState.queries.includes(query)
-                        ? draftState.queries
-                        : [query],
-                      value: event.target.value,
-                    });
-                    searchDebouncer.maybeExecute(event.target.value);
-                  }}
-                  className="h-11"
-                  placeholder={dict.recipeList.searchPlaceholder}
-                  autoFocus
-                />
-              </InputGroup>
-              <Button type="submit" size="lg" className="h-11">
-                <Search data-icon="inline-start" />
-                {dict.recipeList.searchSubmit}
-              </Button>
-            </form>
-          </div>
-        ) : null}
       </section>
 
       {filteredRecipes.length > 0 ? (

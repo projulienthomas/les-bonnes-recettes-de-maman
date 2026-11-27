@@ -101,6 +101,7 @@ export type RecipeSummary = Pick<
   /** Absent until the backend exposing it is deployed. */
   yieldLabel?: string;
   stepCount?: number;
+  totalTime?: string;
 };
 
 export type EditableRecipeContent = {
