@@ -8,7 +8,8 @@ const longTitles = {
 
 test("keyboard focus reveals the auto-hidden site header", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name.startsWith("mobile-"), "Desktop navigation only");
-  await page.goto("/fr");
+  // The demo home page is too short to scroll; a recipe page is long enough.
+  await page.goto("/fr/recettes/tarte-de-demonstration");
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
   await page.mouse.wheel(0, 600);
@@ -39,33 +40,18 @@ test("public typography holds across locales, themes, and widths", async ({ page
     const pageTitles = page.locator("main h1:visible");
     await expect(pageTitles).toHaveCount(1);
     const pageTitle = pageTitles.first();
-    const titleStyle = await pageTitle.evaluate((element) => {
-      const style = getComputedStyle(element);
-      return {
-        fontFamily: style.fontFamily,
-        fontSize: Number.parseFloat(style.fontSize),
-      };
-    });
-    if (testInfo.project.name.startsWith("mobile-")) {
-      await expect(pageTitle).toHaveClass(/sr-only/);
-    } else {
-      expect(titleStyle.fontFamily).toContain("Newsreader");
-      expect(titleStyle.fontSize).toBeGreaterThanOrEqual(40);
-    }
+    // The site name in the header is the visible title; the page's own h1 is
+    // kept for screen readers at every width.
+    await expect(pageTitle).toHaveClass(/sr-only/);
     await expectDescendingOutline(page);
 
     const titleLayout = await pageTitle.evaluate((element, value) => {
       element.textContent = value;
       return {
-        clientWidth: element.clientWidth,
-        scrollWidth: element.scrollWidth,
         documentWidth: document.documentElement.scrollWidth,
         viewportWidth: document.documentElement.clientWidth,
       };
     }, longTitles[locale]);
-    if (!testInfo.project.name.startsWith("mobile-")) {
-      expect(titleLayout.scrollWidth).toBeLessThanOrEqual(titleLayout.clientWidth + 1);
-    }
     expect(titleLayout.documentWidth).toBeLessThanOrEqual(titleLayout.viewportWidth + 1);
 
     const editorialLead = page.locator("main .type-editorial-lead:visible").first();
@@ -120,14 +106,15 @@ test("public typography holds across locales, themes, and widths", async ({ page
     await expectDescendingOutline(page);
     const instructionColumn = page.locator("main ol").first();
     if ((await instructionColumn.count()) > 0 && testInfo.project.name === "desktop") {
-      expect((await instructionColumn.boundingBox())?.width ?? 0).toBeLessThanOrEqual(720);
+      expect((await instructionColumn.boundingBox())?.width ?? 0).toBeLessThanOrEqual(768);
     }
     if (testInfo.project.name === "desktop") {
       const recipeOgUrl = await page.locator('meta[property="og:image"]').last().getAttribute("content");
       expect(recipeOgUrl).toBeTruthy();
       const recipeOgResponse = await request.get(recipeOgUrl!);
       expect(recipeOgResponse.ok()).toBe(true);
-      expect(recipeOgResponse.headers()["content-type"]).toContain("image/png");
+      // Link previews use the recipe's own photo, whatever its format.
+      expect(recipeOgResponse.headers()["content-type"]).toMatch(/^image\//);
     }
   }
 

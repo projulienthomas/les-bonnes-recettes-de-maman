@@ -452,13 +452,15 @@ test("homepage discovery state remains URL-backed", async ({
   ]);
   expect((searchBox?.y ?? 0) + (searchBox?.height ?? 0)).toBeLessThanOrEqual(dessertBox?.y ?? 0);
   const resultCount = page.getByText(/^\d+ recettes? sur \d+$/);
-  await expect(resultCount).toBeVisible();
-  await expect(resultCount).toHaveClass(/type-meta/);
-  expect(await resultCount.evaluate((element) => getComputedStyle(element).whiteSpace))
-    .toBe("nowrap");
+  // At rest the count is only announced to screen readers; it shows once a
+  // search or a category is active.
+  await expect(resultCount).toHaveClass(/sr-only/);
   await searchbox.fill("tarte");
   await searchbox.press("Enter");
   await expect(page).toHaveURL(/q=tarte/);
+  await expect(resultCount).toHaveClass(/type-meta/);
+  expect(await resultCount.evaluate((element) => getComputedStyle(element).whiteSpace))
+    .toBe("nowrap");
 
   await dessertFilter.click();
   await expect(page).toHaveURL(/cat=dessert/);
