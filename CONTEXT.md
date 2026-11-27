@@ -24,7 +24,7 @@ _Avoid_: Idée traitée, Brouillon lié, Recette en cours
 **Categorie de recette**:
 Facette publique qui aide a parcourir le carnet selon le moment de service ou le gout dominant.
 Une Recette peut appartenir a plusieurs categories.
-Le vocabulaire est fermé : `dessert`, `plat`, `sucre` et `sale`. Un ancien libellé non reconnu est conservé temporairement pour correction éditoriale, mais ne participe jamais aux filtres publics.
+Le vocabulaire est fermé : les quatre moments du repas `apero`, `entree`, `plat` et `dessert`, affichés dans cet ordre, puis les deux goûts `sucre` et `sale` pour les recettes qui ne sont pas un plat à part entière (sauces, pâtes de base, boissons). Un ancien libellé non reconnu est conservé temporairement pour correction éditoriale, mais ne participe jamais aux filtres publics.
 _Avoid_: Tag technique, source, collection
 
 **Recherche de recette**:

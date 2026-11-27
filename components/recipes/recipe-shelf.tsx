@@ -30,7 +30,9 @@ import {
   Clock3,
   CookingPot,
   Salad,
+  Soup,
   Users,
+  Wine,
   type LucideIcon,
 } from "lucide-react";
 import type { Dictionary } from "@/i18n/get-dictionary";
@@ -102,8 +104,10 @@ const toneClasses = [
 ];
 
 const categoryIcons: Record<RecipeCategory, LucideIcon> = {
-  dessert: CakeSlice,
+  apero: Wine,
+  entree: Soup,
   plat: CookingPot,
+  dessert: CakeSlice,
   sucre: Candy,
   sale: Salad,
 };

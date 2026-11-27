@@ -61,8 +61,10 @@
     },
     "categoriesLabel": "Receptcategorieën",
     "categories": {
-      "dessert": "Dessert",
+      "apero": "Aperitief",
+      "entree": "Voorgerecht",
       "plat": "Hoofdgerecht",
+      "dessert": "Dessert",
       "sucre": "Zoet",
       "sale": "Hartig"
     },

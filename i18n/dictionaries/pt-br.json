@@ -61,8 +61,10 @@
     },
     "categoriesLabel": "Categorias de receitas",
     "categories": {
-      "dessert": "Sobremesa",
+      "apero": "Aperitivo",
+      "entree": "Entrada",
       "plat": "Prato principal",
+      "dessert": "Sobremesa",
       "sucre": "Doce",
       "sale": "Salgado"
     },

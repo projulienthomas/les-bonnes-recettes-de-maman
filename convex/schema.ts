@@ -83,8 +83,10 @@ const imageCredit = v.union(
 );
 
 const recipeCategory = v.union(
-  v.literal("dessert"),
+  v.literal("apero"),
+  v.literal("entree"),
   v.literal("plat"),
+  v.literal("dessert"),
   v.literal("sucre"),
   v.literal("sale"),
 );

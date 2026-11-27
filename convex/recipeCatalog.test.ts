@@ -3,6 +3,10 @@ import { describe, expect, test } from "vitest";
 import { recipeCatalog } from "./recipeCatalog";
 import { rawRecipeCatalog } from "./recipeCatalog/rawCatalog";
 import { loadCatalogSources } from "./recipeCatalog/validation";
+import { RECIPE_COURSE_CATEGORIES } from "../lib/recipe-categories";
+
+const courseCategories = new Set<string>(RECIPE_COURSE_CATEGORIES);
+const isRecipeCourseCategory = (category: string) => courseCategories.has(category);
 
 const recipes = recipeCatalog;
 
@@ -49,6 +53,41 @@ describe("bilingual recipe catalog", () => {
     );
   });
 
+  test("classifies aperitif and starter recipes by course", () => {
+    const categoriesBySlug = Object.fromEntries(
+      recipes.map((recipe) => [recipe.slug, recipe.categories]),
+    );
+
+    for (const slug of [
+      "gougeres",
+      "cake-au-chevre-et-courgettes",
+      "cake-d-ete-tout-vert",
+      "cake-chevre-noix-olives",
+      "cake-aux-tomates-sechees-et-a-la-feta",
+    ]) {
+      expect(categoriesBySlug[slug]).toEqual(["apero", "sale"]);
+    }
+    expect(categoriesBySlug["soupe-de-champagne"]).toEqual(["apero", "sucre"]);
+    expect(categoriesBySlug["veloute-de-courgettes"]).toEqual(["entree", "sale"]);
+    for (const slug of ["bechamel", "mayonnaise"]) {
+      expect(categoriesBySlug[slug]).toEqual(["sale"]);
+    }
+  });
+
+  test("lists a recipe's course before its taste", () => {
+    for (const recipe of recipes) {
+      const courseIndexes = recipe.categories
+        .map((category, index) => (isRecipeCourseCategory(category) ? index : -1))
+        .filter((index) => index >= 0);
+      const firstTaste = recipe.categories.findIndex(
+        (category) => !isRecipeCourseCategory(category),
+      );
+      if (courseIndexes.length && firstTaste >= 0) {
+        expect(Math.max(...courseIndexes), recipe.slug).toBeLessThan(firstTaste);
+      }
+    }
+  });
+
   test("loads every recipe with explicit French and English content", () => {
     for (const recipe of recipes) {
       const french = recipe.translations.fr;
@@ -79,7 +118,7 @@ describe("bilingual recipe catalog", () => {
     expect(source).toBeDefined();
 
     const seeded = source!;
-    expect(seeded.categories).toEqual(["sucre"]);
+    expect(seeded.categories).toEqual(["apero", "sucre"]);
     expect(seeded.heroImageUrl).toBe("https://images.unsplash.com/photo-1578425144925-a3638eb650aa?auto=format&fit=crop&w=1400&q=85");
     expect(seeded.referenceServings).toBeUndefined();
 
@@ -970,7 +1009,7 @@ describe("bilingual recipe catalog", () => {
     expect(seeded).toMatchObject({
       slug: "cake-aux-tomates-sechees-et-a-la-feta",
       heroImageUrl: "https://images.unsplash.com/photo-1624144043330-82dcf58bf8ec?auto=format&fit=crop&w=1400&q=85",
-      categories: ["sale"],
+      categories: ["apero", "sale"],
       legacyCategoryLabels: [],
       referenceServings: 6,
     });

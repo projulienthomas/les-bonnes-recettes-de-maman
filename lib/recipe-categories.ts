@@ -1,6 +1,18 @@
-export const RECIPE_CATEGORIES = ["dessert", "plat", "sucre", "sale"] as const;
+/** Courses, in the order a meal is served. */
+export const RECIPE_COURSE_CATEGORIES = ["apero", "entree", "plat", "dessert"] as const;
+
+/** Dominant taste, for recipes that are not a course on their own (sauces, doughs, drinks). */
+export const RECIPE_TASTE_CATEGORIES = ["sucre", "sale"] as const;
+
+/** Display order: the four courses first, then the two tastes. */
+export const RECIPE_CATEGORIES = [
+  ...RECIPE_COURSE_CATEGORIES,
+  ...RECIPE_TASTE_CATEGORIES,
+] as const;
 
 export type RecipeCategory = (typeof RECIPE_CATEGORIES)[number];
+export type RecipeCourseCategory = (typeof RECIPE_COURSE_CATEGORIES)[number];
+export type RecipeTasteCategory = (typeof RECIPE_TASTE_CATEGORIES)[number];
 
 export type RecipeCategorySource = {
   categories?: readonly RecipeCategory[];
