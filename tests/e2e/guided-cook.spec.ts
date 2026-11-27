@@ -429,7 +429,8 @@ test("locale switching preserves discovery and anchor state", async ({
   page,
 }) => {
   await page.goto("/fr?q=tarte&cat=dessert&view=list&sort=date&order=asc#recettes");
-  await page.getByRole("link", { name: "en", exact: true }).click();
+  await page.getByRole("button", { name: /^Langue/ }).click();
+  await page.getByRole("menuitem", { name: /English/ }).click();
   await expect(page).toHaveURL(
     /\/en\?q=tarte&cat=dessert&view=list&sort=date&order=asc#recettes$/,
   );
