@@ -420,17 +420,7 @@ test("the legacy collection URL preserves discovery state", async ({
   await expect(
     page.getByRole("region", { name: "Recherche et filtres des recettes" }),
   ).toBeAttached();
-  const searchbox = page.getByRole("searchbox");
-  const revealSearch = page.getByRole("button", {
-    name: "Rechercher une recette",
-  });
-  await expect(revealSearch.or(searchbox)).toBeVisible();
-  if (await revealSearch.isVisible()) {
-    await expect(async () => {
-      if (!(await searchbox.isVisible())) await revealSearch.click();
-      await expect(searchbox).toBeVisible({ timeout: 500 });
-    }).toPass({ timeout: 5_000 });
-  }
+  const searchbox = page.getByRole("searchbox", { name: "Rechercher une recette" });
   await expect(searchbox).toBeVisible();
   await expect(searchbox).toHaveValue("tarte");
 });
@@ -449,30 +439,27 @@ test("homepage discovery state remains URL-backed", async ({
   page,
 }, testInfo) => {
   await page.goto("/fr");
-  const searchbox = page.getByRole("searchbox");
-  const revealSearch = page.getByRole("button", {
-    name: "Rechercher une recette",
-  });
-  if (await revealSearch.count()) await revealSearch.click();
+  const searchbox = page.getByRole("searchbox", { name: "Rechercher une recette" });
   await expect(searchbox).toBeVisible();
-  await expect(searchbox).toBeFocused();
+  // Always visible, so it must not pop the phone keyboard on page load.
+  await expect(searchbox).not.toBeFocused();
+  await expect(page.getByRole("button", { name: "Rechercher une recette" })).toHaveCount(0);
+  const dessertFilter = page.getByRole("button", { name: "Dessert" });
+  const [searchBox, dessertBox] = await Promise.all([
+    searchbox.boundingBox(),
+    dessertFilter.boundingBox(),
+  ]);
+  expect((searchBox?.y ?? 0) + (searchBox?.height ?? 0)).toBeLessThanOrEqual(dessertBox?.y ?? 0);
   const resultCount = page.getByText(/^\d+ recettes? sur \d+$/);
   await expect(resultCount).toBeVisible();
   await expect(resultCount).toHaveClass(/type-meta/);
   expect(await resultCount.evaluate((element) => getComputedStyle(element).whiteSpace))
     .toBe("nowrap");
   await searchbox.fill("tarte");
-  await page.getByRole("button", { name: "Rechercher" }).click();
+  await searchbox.press("Enter");
   await expect(page).toHaveURL(/q=tarte/);
 
-  const revealFilters = async (controlName: string) => {
-    const control = page.getByRole("button", { name: controlName });
-    if (!(await control.isVisible()) && (await revealSearch.count()))
-      await revealSearch.click();
-    await expect(control).toBeVisible();
-  };
-  await revealFilters("Dessert");
-  await page.getByRole("button", { name: "Dessert" }).click();
+  await dessertFilter.click();
   await expect(page).toHaveURL(/cat=dessert/);
   const resetFilters = page.getByRole("button", { name: "Réinitialiser" });
   const [resultBox, resetBox] = await Promise.all([
@@ -486,7 +473,6 @@ test("homepage discovery state remains URL-backed", async ({
   if (testInfo.project.name.startsWith("mobile-")) {
     await page.goto("/fr?q=tarte&cat=dessert&view=list");
   } else {
-    await revealFilters("Vue liste");
     await page.getByRole("button", { name: "Vue liste" }).click();
   }
   await expect(page).toHaveURL(/view=list/);

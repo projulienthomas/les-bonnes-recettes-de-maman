@@ -36,9 +36,7 @@
     "filtersLabel": "Recipe search and filters",
     "disclosureLabel": "Filters and display",
     "searchLabel": "Search recipes",
-    "closeSearch": "Close search",
     "searchPlaceholder": "Search by title or ingredient",
-    "searchSubmit": "Search",
     "viewLabel": "Recipe display mode",
     "views": {
       "cards": "Card view",

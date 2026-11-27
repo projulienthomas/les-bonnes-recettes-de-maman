@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { ChevronLeft, Clock3 } from "lucide-react";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import type { Locale } from "@/i18n/config";
 import {
@@ -25,6 +24,8 @@ import { EquipmentIcon } from "./equipment-icon";
 import { RecipeIngredientsPanel } from "./recipe-ingredients-panel";
 import { RecipeComments } from "./recipe-comments";
 import type { Recipe } from "./types";
+import { RecipeBackLink } from "./recipe-back-link";
+import { getRecipePageTimes, recipeTimeIcons } from "./recipe-times";
 import { StepIngredients } from "./step-ingredients";
 import { RecipeStepText } from "./recipe-step-text";
 
@@ -74,15 +75,16 @@ export function RecipePresentation({
   );
   return (
     <main className="text-foreground">
-      <header className="px-5 py-8 sm:py-12 lg:px-10 lg:py-20">
+      <header className="px-5 pt-4 pb-8 sm:pt-6 sm:pb-12 lg:px-10 lg:pt-8 lg:pb-20">
         {mode === "public" ? (
-          <Link
-            href={`/${locale}#recettes`}
-            className="mx-auto mb-4 flex min-h-11 max-w-7xl items-center gap-2 rounded-full px-3 text-sm font-semibold text-muted-foreground transition-[scale,background-color,color] duration-150 hover:bg-muted hover:text-foreground active:scale-[0.96] lg:hidden"
-          >
-            <ChevronLeft className="size-5" />
-            {dict.recipeDetail.backToList}
-          </Link>
+          <div className="mx-auto mb-4 max-w-7xl lg:mb-8">
+            <RecipeBackLink
+              locale={locale}
+              slug={recipe.slug}
+              label={dict.recipeDetail.backToList}
+              className="-ml-3 inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-sm font-semibold text-muted-foreground transition-[scale,background-color,color] duration-150 hover:bg-muted hover:text-foreground active:scale-[0.96] lg:min-h-10"
+            />
+          </div>
         ) : null}
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(22rem,0.92fr)] lg:items-center lg:gap-14">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-muted shadow-card">
@@ -97,19 +99,6 @@ export function RecipePresentation({
           </div>
 
           <div className="flex min-w-0 flex-col items-start">
-            {mode === "public" ? (
-              <Link
-                href={`/${locale}#recettes`}
-                className="mb-8 hidden min-h-11 items-center gap-2 rounded-full px-3 text-sm font-semibold text-muted-foreground transition-[scale,background-color,color] duration-150 hover:bg-muted hover:text-foreground active:scale-[0.96] lg:inline-flex lg:min-h-10"
-              >
-                <ChevronLeft className="size-5" />
-                {dict.recipeDetail.backToList}
-              </Link>
-            ) : null}
-            <div className="type-label mb-5 inline-flex items-center gap-2 text-primary tabular-nums">
-              <Clock3 className="size-4 stroke-[1.8]" />
-              <span>{recipe.timeLabel}</span>
-            </div>
             <h1 className="type-display max-w-[min(14ch,100%)] hyphens-auto [overflow-wrap:anywhere]">{recipe.title}</h1>
             <p className="type-byline mt-4 text-muted-foreground">
               {formatRecipeByline(
@@ -118,6 +107,7 @@ export function RecipePresentation({
                 recipe.author,
               )}
             </p>
+            <RecipeTimes dict={dict} recipe={recipe} />
             {recipe.description ? (
               <p className="type-editorial-lead mt-7 max-w-[52ch] text-foreground/75">
                 {recipe.description}
@@ -142,8 +132,6 @@ export function RecipePresentation({
       {/* Body: equipment, ingredients, then instructions */}
       <section className="border-t border-border px-5 pb-16 lg:px-10 lg:pb-32">
         <div className="mx-auto max-w-7xl">
-          <RecipeMeta dict={dict} recipe={recipe} />
-
           <div className="mt-8 lg:mt-12 lg:grid lg:grid-cols-[minmax(20rem,24rem)_minmax(0,1fr)] lg:items-start lg:gap-14 xl:gap-20">
             <div className="space-y-8 lg:sticky lg:top-24 lg:self-start lg:space-y-10">
               {recipe.equipment.length > 0 ? (
@@ -379,27 +367,31 @@ export function RecipePresentation({
   );
 }
 
-function RecipeMeta({ dict, recipe }: { dict: Dictionary; recipe: Recipe }) {
-  const meta = [
-    [dict.recipeDetail.prepTime, recipe.prepTime],
-    [dict.recipeDetail.cookTime, recipe.cookTime],
-    [dict.recipeDetail.restTime, recipe.restTime],
-    [dict.recipeDetail.totalTime, recipe.totalTime],
-    [dict.recipeDetail.temperature, recipe.temperature],
-  ].filter(([, value]) => value);
+/** Prep, cook, rest and total times and the oven temperature, at the top of the page. */
+function RecipeTimes({ dict, recipe }: { dict: Dictionary; recipe: Recipe }) {
+  const times = getRecipePageTimes(dict, recipe);
 
-  if (meta.length === 0) return null;
+  if (times.length === 0) return null;
 
   return (
-    <dl className="flex flex-wrap items-start gap-x-8 gap-y-4 border-y border-border py-4 lg:gap-x-12 lg:py-5">
-      {meta.map(([label, value]) => (
-        <div key={label} className="grid min-w-fit gap-1">
-          <dt className="type-label text-primary">{label}</dt>
-          <dd className="whitespace-nowrap text-base font-bold leading-tight text-foreground tabular-nums">
-            {value}
-          </dd>
-        </div>
-      ))}
+    <dl
+      data-recipe-times
+      className="mt-6 flex flex-wrap items-start gap-x-6 gap-y-4 lg:gap-x-8"
+    >
+      {times.map(({ key, label, value }) => {
+        const Icon = recipeTimeIcons[key];
+        return (
+          <div key={key} className="flex min-w-fit items-start gap-2">
+            <Icon aria-hidden className="mt-0.5 size-5 shrink-0 stroke-[1.8] text-primary" />
+            <div className="grid gap-1">
+              <dt className="type-label text-primary">{label}</dt>
+              <dd className="whitespace-nowrap text-base font-bold leading-tight text-foreground tabular-nums">
+                {value}
+              </dd>
+            </div>
+          </div>
+        );
+      })}
     </dl>
   );
 }

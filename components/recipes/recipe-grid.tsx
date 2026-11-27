@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Clock3, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import type { Locale } from "@/i18n/config";
 import { formatRecipeByline } from "@/lib/recipe-author";
 import type { RecipeSummary } from "./types";
 import { RecipeCreationChooser } from "./recipe-creation-chooser";
+import { getRecipeCardTimes, RecipeCardTimes } from "./recipe-times";
 
 const defaultRecipeImageUrl =
   "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=1400&q=85";
@@ -35,6 +36,7 @@ export function RecipeGrid({
             ? dict.recipeList.commentSingular
             : dict.recipeList.commentPlural
         ).replace("{count}", String(recipe.commentCount));
+        const times = getRecipeCardTimes(dict, recipe);
 
         return (
           <li key={recipe._id} className="h-full">
@@ -53,11 +55,12 @@ export function RecipeGrid({
                 />
               </span>
               <span className="flex min-h-24 flex-1 flex-col p-3 md:block md:min-h-0 md:p-5">
-                <span className="type-label mb-4 hidden items-center gap-4 text-primary tabular-nums md:flex">
-                  <span className="inline-flex items-center gap-2">
-                    <Clock3 aria-hidden className="size-4 stroke-[1.8]" />
-                    {recipe.timeLabel}
-                  </span>
+                <span className="type-label mb-4 hidden flex-wrap items-center gap-x-4 gap-y-1 text-primary tabular-nums md:flex">
+                  <RecipeCardTimes
+                    times={times}
+                    className="gap-x-3.5"
+                    iconClassName="size-4 shrink-0 stroke-[1.8]"
+                  />
                   <CommentCount
                     count={recipe.commentCount}
                     label={commentLabel}
@@ -71,20 +74,20 @@ export function RecipeGrid({
                 >
                   {recipe.title}
                 </span>
-                {recipe.timeLabel || recipe.commentCount > 0 ? (
+                {times.length > 0 || recipe.commentCount > 0 ? (
                   <span
-                    className="mt-auto inline-flex items-center gap-3 pt-3 text-xs font-bold text-muted-foreground tabular-nums md:hidden"
+                    className="mt-auto flex flex-wrap items-center gap-x-2.5 gap-y-1 pt-3 text-xs font-bold text-muted-foreground tabular-nums md:hidden"
                   >
-                    {recipe.timeLabel ? (
-                      <span className="inline-flex items-center gap-1.5">
-                        <Clock3 aria-hidden className="size-3.5 stroke-[1.8]" />
-                        {recipe.timeLabel}
-                      </span>
-                    ) : null}
+                    <RecipeCardTimes
+                      times={times}
+                      className="contents"
+                      iconClassName="size-3.5 shrink-0 stroke-[1.8]"
+                    />
                     <CommentCount
                       count={recipe.commentCount}
                       label={commentLabel}
-                      iconClassName="size-3.5 stroke-[1.8]"
+                      className="whitespace-nowrap"
+                      iconClassName="size-3.5 shrink-0 stroke-[1.8]"
                     />
                   </span>
                 ) : null}

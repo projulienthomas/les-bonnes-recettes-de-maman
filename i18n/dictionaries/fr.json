@@ -36,9 +36,7 @@
     "filtersLabel": "Recherche et filtres des recettes",
     "disclosureLabel": "Filtres et affichage",
     "searchLabel": "Rechercher une recette",
-    "closeSearch": "Fermer la recherche",
     "searchPlaceholder": "Rechercher par titre ou ingrédient",
-    "searchSubmit": "Rechercher",
     "viewLabel": "Mode d’affichage des recettes",
     "views": {
       "cards": "Vue cartes",

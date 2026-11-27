@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Clock3 } from "lucide-react";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import type { Locale } from "@/i18n/config";
 import { formatRecipeByline } from "@/lib/recipe-author";
 import type { RecipeSummary } from "./types";
 import { RecipeCreationChooser } from "./recipe-creation-chooser";
+import { getRecipeCardTimes, RecipeCardTimes } from "./recipe-times";
 
 const defaultRecipeImageUrl =
   "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=1400&q=85";
@@ -43,10 +43,11 @@ export function RecipeListRows({
               />
             </span>
             <span className="grid gap-3 px-1 py-1 sm:py-3">
-              <span className="type-label inline-flex items-center gap-2 text-primary tabular-nums">
-                <Clock3 className="size-4 stroke-[1.8]" />
-                {recipe.timeLabel}
-              </span>
+              <RecipeCardTimes
+                times={getRecipeCardTimes(dict, recipe)}
+                className="type-label gap-x-4 text-primary tabular-nums"
+                iconClassName="size-4 shrink-0 stroke-[1.8]"
+              />
               <span className="grid gap-2">
                 <span className="type-card-title text-foreground">
                   {recipe.title}
