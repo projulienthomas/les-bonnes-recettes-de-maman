@@ -1,11 +1,17 @@
-import { Clock3, Flame, Hourglass, Slice, Thermometer, type LucideIcon } from "lucide-react";
+import { Clock3, Flame, Hourglass, Thermometer, createLucideIcon, type LucideIcon } from "lucide-react";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { cn } from "@/lib/utils";
 import type { Recipe, RecipeSummary } from "./types";
 
+// The whisk of Lucide Lab (ISC licence), drawn here to avoid a second icon package.
+const Whisk = createLucideIcon("whisk", [
+  ["path", { d: "M22 2 3.45 20.55", key: "piomnp" }],
+  ["path", { d: "M3.5 13.5a5 5 0 1 0 7.1 7.1C12.6 18.6 15 9 15 9s-9.6 2.5-11.5 4.5", key: "1crn9o" }],
+]);
+
 /** The pictograms shared by the recipe cards and the recipe page. */
 export const recipeTimeIcons = {
-  prepTime: Slice,
+  prepTime: Whisk,
   cookTime: Flame,
   restTime: Hourglass,
   totalTime: Clock3,
