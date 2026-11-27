@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { IntentPrefetchLink } from "./intent-prefetch-link";
 import { Clock3 } from "lucide-react";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import type { Locale } from "@/i18n/config";
@@ -29,7 +29,7 @@ export function RecipeListRows({
     <ul className="grid gap-4">
       {recipes.map((recipe) => (
         <li key={recipe._id}>
-          <Link
+          <IntentPrefetchLink
             href={`/${locale}/recettes/${recipe.slug}`}
             className="surface-elevated group grid grid-cols-[6rem_minmax(0,1fr)] items-center gap-4 rounded-3xl bg-card p-3 transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:grid-cols-[9rem_minmax(0,1fr)]"
           >
@@ -65,7 +65,7 @@ export function RecipeListRows({
                 </span>
               ) : null}
             </span>
-          </Link>
+          </IntentPrefetchLink>
         </li>
       ))}
       {showAddRecipeRow ? (

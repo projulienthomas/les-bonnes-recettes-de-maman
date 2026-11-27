@@ -8,6 +8,7 @@ export function revalidateRecipePaths(slug: string) {
     revalidatePath(`/${locale}`);
     revalidatePath(`/${locale}/recettes`);
     revalidatePath(`/${locale}/recettes/${slug}`);
+    revalidatePath(`/${locale}/recettes/${slug}/cuisiner`);
     revalidatePath(`/${locale}/admin/recettes`);
   }
 }

@@ -1,16 +1,29 @@
 import { cache } from "react";
 import { fetchQuery } from "convex/nextjs";
 import { notFound } from "next/navigation";
-import { GuidedCookMode } from "@/components/recipes/guided-cook-mode";
+import { GuidedCookModeFromSearchParams } from "@/components/recipes/guided-cook-mode-from-search-params";
 import { api } from "@/convex/_generated/api";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { hasLocale, type Locale } from "@/i18n/config";
 import { getPublicRecipeE2EFixture } from "@/components/recipes/admin-recipe-e2e-fixtures";
-import { parseSelectedServings } from "@/lib/recipe-servings";
+import { listPublishedRecipeSlugs } from "@/lib/recipe-static-params";
 import {
   normalizeRecipeForDisplay,
   type PublicRecipeWire,
 } from "@/lib/recipe-public";
+
+// Static like the recipe page: same data, same refresh window and admin
+// revalidation (`revalidateRecipePaths`). `?personnes=` is read in the browser.
+export const dynamic = "force-static";
+export const revalidate = 300;
+
+export async function generateStaticParams({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  return hasLocale(params.locale) ? listPublishedRecipeSlugs(params.locale) : [];
+}
 
 const getRecipe = cache((locale: Locale, slug: string) => {
   const fixture = getPublicRecipeE2EFixture(locale, slug);
@@ -24,15 +37,10 @@ const getRecipe = cache((locale: Locale, slug: string) => {
 
 export default async function CookPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ locale: string; slug: string }>;
-  searchParams: Promise<{ personnes?: string | string[] }>;
 }) {
   const { locale, slug } = await params;
-  const selectedServings = parseSelectedServings(
-    (await searchParams).personnes,
-  );
   if (!hasLocale(locale)) notFound();
 
   const [dict, recipe] = await Promise.all([
@@ -42,11 +50,6 @@ export default async function CookPage({
   if (!recipe) notFound();
 
   return (
-    <GuidedCookMode
-      locale={locale}
-      dict={dict}
-      recipe={recipe}
-      selectedServings={selectedServings ?? undefined}
-    />
+    <GuidedCookModeFromSearchParams locale={locale} dict={dict} recipe={recipe} />
   );
 }

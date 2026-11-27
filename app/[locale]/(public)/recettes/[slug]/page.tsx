@@ -5,9 +5,9 @@ import { fetchQuery } from "convex/nextjs";
 import { RecipeDetailPage } from "@/components/recipes/recipe-detail-page";
 import { api } from "@/convex/_generated/api";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { localeAlternates, localeDetails, type Locale } from "@/i18n/config";
+import { hasLocale, localeAlternates, localeDetails, type Locale } from "@/i18n/config";
 import { getPublicRecipeE2EFixture } from "@/components/recipes/admin-recipe-e2e-fixtures";
-import { parseSelectedServings } from "@/lib/recipe-servings";
+import { listPublishedRecipeSlugs } from "@/lib/recipe-static-params";
 import {
   normalizeRecipeForDisplay,
   type PublicRecipeWire,
@@ -18,8 +18,23 @@ type PageProps = {
     locale: Locale;
     slug: string;
   }>;
-  searchParams: Promise<{ personnes?: string | string[] }>;
 };
+
+// Prerendered and served from cache. `fetchQuery` asks for `no-store`, which
+// would make the route dynamic: `force-static` keeps it static, and the page is
+// regenerated at most every 5 minutes, or at once through
+// `revalidateRecipePaths` when the admin saves. `?personnes=` is read in the
+// browser (ServingsFromSearchParams), and comments stay live through Convex.
+export const dynamic = "force-static";
+export const revalidate = 300;
+
+export async function generateStaticParams({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  return hasLocale(params.locale) ? listPublishedRecipeSlugs(params.locale) : [];
+}
 
 // Deduped across generateMetadata + the page render within one request.
 const getRecipe = cache((locale: Locale, slug: string) => {
@@ -68,11 +83,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params, searchParams }: PageProps) {
+export default async function Page({ params }: PageProps) {
   const { locale, slug } = await params;
-  const selectedServings = parseSelectedServings(
-    (await searchParams).personnes,
-  );
   const [dict, recipe] = await Promise.all([
     getDictionary(locale),
     getRecipe(locale, slug),
@@ -87,7 +99,6 @@ export default async function Page({ params, searchParams }: PageProps) {
       locale={locale}
       dict={dict}
       recipe={recipe}
-      initialServings={selectedServings ?? undefined}
     />
   );
 }

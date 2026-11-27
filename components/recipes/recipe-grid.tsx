@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { IntentPrefetchLink } from "./intent-prefetch-link";
 import { Clock3, MessageCircle } from "lucide-react";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import type { Locale } from "@/i18n/config";
@@ -38,7 +38,7 @@ export function RecipeGrid({
 
         return (
           <li key={recipe._id} className="h-full">
-            <Link
+            <IntentPrefetchLink
               href={`/${locale}/recettes/${recipe.slug}`}
               className="surface-elevated group flex h-full flex-col overflow-hidden rounded-2xl bg-card text-start transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:rounded-3xl"
             >
@@ -96,7 +96,7 @@ export function RecipeGrid({
                   )}
                 </span>
               </span>
-            </Link>
+            </IntentPrefetchLink>
           </li>
         );
       })}
