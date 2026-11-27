@@ -267,7 +267,12 @@ test("recipe content orders equipment, ingredients, then preparation", async ({ 
   const equipmentBox = await equipment.boundingBox();
   const preparationBox = await preparation.boundingBox();
   expect(equipmentBox?.y).toBeLessThan(ingredientsBox?.y ?? 0);
-  expect(ingredientsBox?.y).toBeLessThan(preparationBox?.y ?? 0);
+  if ((page.viewportSize()?.width ?? 0) >= 1024) {
+    // From lg up, preparation sits in its own column beside the ingredients.
+    expect(ingredientsBox?.x).toBeLessThan(preparationBox?.x ?? 0);
+  } else {
+    expect(ingredientsBox?.y).toBeLessThan(preparationBox?.y ?? 0);
+  }
 });
 
 test("mobile recipe back link sits above the hero image", async ({ page }, testInfo) => {
@@ -322,7 +327,9 @@ test("desktop recipe body keeps a compact ingredient panel", async ({ page }, te
   const ingredients = page.getByRole("heading", { name: "Ingrédients" });
   const ingredientPanel = ingredients.locator("xpath=ancestor::aside");
   const panelBox = await ingredientPanel.boundingBox();
-  expect(panelBox?.width).toBe(320);
+  // The ingredient column is minmax(20rem, 24rem) in recipe-detail-page.tsx.
+  expect(panelBox?.width).toBeGreaterThanOrEqual(320);
+  expect(panelBox?.width).toBeLessThanOrEqual(384);
 
   const temperature = page.getByText("four moyen", { exact: true });
   await expect(page.getByText("Température", { exact: true })).toBeVisible();

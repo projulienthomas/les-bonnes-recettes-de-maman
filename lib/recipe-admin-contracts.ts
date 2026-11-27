@@ -213,3 +213,23 @@ function hasLegacyLocalizedStepShape(localized: unknown) {
       return Array.isArray(steps) && steps.some((step) => typeof step === "string");
     });
 }
+
+/** Upper bound on slugs per revalidation call; the sync scripts send batches. */
+export const maxRevalidatedRecipeSlugs = 100;
+
+export const revalidateRecipesRequestSchema = z.strictObject({
+  slugs: z
+    .array(
+      z
+        .string()
+        .max(200)
+        .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug de recette invalide."),
+    )
+    .min(1)
+    .max(maxRevalidatedRecipeSlugs),
+});
+
+export const revalidateRecipesSuccessSchema = z.strictObject({
+  type: z.literal("success"),
+  slugs: z.array(z.string()),
+});

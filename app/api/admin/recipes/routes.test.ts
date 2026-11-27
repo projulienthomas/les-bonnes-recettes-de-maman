@@ -54,6 +54,7 @@ import { POST as setRecipeVisibility } from "./visibility/route";
 import { DELETE as deleteRecipe } from "./delete/route";
 import { POST as cleanupImage } from "./cleanup-image/route";
 import { POST as accessAdmin } from "./access/route";
+import { POST as revalidateRecipes } from "./revalidate/route";
 import {
   POST as createIdea,
   DELETE as deleteIdea,
@@ -130,6 +131,7 @@ describe("recipe admin route contracts", () => {
       setRecipeVisibility(malformedRequest() as never),
       deleteRecipe(malformedRequest() as never),
       accessAdmin(malformedRequest() as never),
+      revalidateRecipes(malformedRequest() as never),
       createIdea(malformedRequest() as never),
       deleteIdea(malformedRequest() as never),
     ]);
@@ -553,5 +555,50 @@ describe("recipe admin route contracts", () => {
       type: "conflict",
       latestRevision: 7,
     });
+  });
+  test("revalidate requires admin access before reading the body", async () => {
+    getRecipeAdminAccess.mockResolvedValueOnce({
+      ok: false,
+      status: 401,
+      message: "Acces admin requis.",
+    });
+    const response = await revalidateRecipes(
+      request({ slugs: ["tarte-mobile"] }) as never,
+    );
+    expect(response.status).toBe(401);
+    expect(revalidateRecipePaths).not.toHaveBeenCalled();
+  });
+
+  test("revalidate refreshes each distinct synced slug", async () => {
+    const response = await revalidateRecipes(
+      request({ slugs: ["tarte-mobile", "tiramisu", "tarte-mobile"] }) as never,
+    );
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({
+      type: "success",
+      slugs: ["tarte-mobile", "tiramisu"],
+    });
+    expect(revalidateRecipePaths.mock.calls).toEqual([
+      ["tarte-mobile"],
+      ["tiramisu"],
+    ]);
+  });
+
+  test("revalidate rejects empty, oversized, and malformed slug lists", async () => {
+    const invalidBodies = [
+      {},
+      { slugs: [] },
+      { slugs: "tarte-mobile" },
+      { slugs: ["../admin"] },
+      { slugs: ["Tarte Mobile"] },
+      { slugs: ["tarte-mobile"], extra: true },
+      { slugs: Array.from({ length: 101 }, (_, index) => `recette-${index}`) },
+    ];
+    for (const body of invalidBodies) {
+      const response = await revalidateRecipes(request(body) as never);
+      expect(response.status).toBe(400);
+      expect(await response.json()).toMatchObject({ type: "validation" });
+    }
+    expect(revalidateRecipePaths).not.toHaveBeenCalled();
   });
 });

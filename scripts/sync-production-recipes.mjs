@@ -1,5 +1,9 @@
 import { ConvexHttpClient } from "convex/browser";
 import { makeFunctionReference } from "convex/server";
+import {
+  recipeSlugsInFolder,
+  revalidateSitePages,
+} from "./lib/revalidate-site-pages.mjs";
 
 const adminPassword = process.env.RECIPE_ADMIN_PASSWORD;
 if (!adminPassword) {
@@ -37,3 +41,7 @@ const result = await client.mutation(
   recipeSlug ? { adminPassword, slug: recipeSlug } : { adminPassword },
 );
 console.log(JSON.stringify(result, null, 2));
+
+await revalidateSitePages(
+  recipeSlug ? [recipeSlug] : recipeSlugsInFolder("convex", "recipeCatalog", "recipes"),
+);
