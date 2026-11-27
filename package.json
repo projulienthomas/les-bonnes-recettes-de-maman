@@ -16,7 +16,8 @@
     "sync:recipes:production": "node --env-file-if-exists=.env.local scripts/sync-production-recipes.mjs",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "sync:recipe-translations:production": "npx convex run --prod recipeTranslations/sync:apply"
+    "revalidate:recipes:production": "node --env-file-if-exists=.env.local scripts/revalidate-recipe-pages.mjs",
+    "sync:recipe-translations:production": "node --env-file-if-exists=.env.local scripts/sync-recipe-translations-production.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -56,7 +57,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
     "@edge-runtime/vm": "^5.0.0",
-    "@playwright/test": "^1.61.1",
+    "@playwright/test": "~1.64.1",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.1.1",
     "@types/react": "^19.2.17",
@@ -65,6 +66,7 @@
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.2.10",
     "hono": "^4.12.31",
+    "playwright-core": "~1.64.1",
     "shadcn": "^4.13.1",
     "tailwindcss": "^4.3.3",
     "vitest": "^4.1.10"
