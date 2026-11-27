@@ -99,6 +99,16 @@ export function RecipeListExplorer({
     [activeCategories, activeSort, activeSortDirection, locale, query, recipes],
   );
   const hasActiveFilters = query.length > 0 || activeCategories.length > 0;
+  // How many recipes each category holds for the current search.
+  const categoryCounts = useMemo(() => {
+    const counts = new Map<RecipeCategory, number>();
+    for (const recipe of filterRecipes(recipes, query, [])) {
+      for (const category of recipe.categories) {
+        counts.set(category, (counts.get(category) ?? 0) + 1);
+      }
+    }
+    return counts;
+  }, [query, recipes]);
 
   // The query this search box last wrote to the URL. One search is one history
   // entry: the first change pushes, later ones replace it, so Back returns to
@@ -206,7 +216,6 @@ export function RecipeListExplorer({
 
         <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
           <ToggleGroup
-            multiple
             value={activeCategories}
             onValueChange={(values: string[]) => updateUrl({
               query,
@@ -221,7 +230,12 @@ export function RecipeListExplorer({
             aria-label={dict.recipeList.categoriesLabel}
           >
             {RECIPE_COURSE_CATEGORIES.map((category) => (
-              <CategoryToggle key={category} category={category} dict={dict} />
+              <CategoryToggle
+                key={category}
+                category={category}
+                count={categoryCounts.get(category) ?? 0}
+                dict={dict}
+              />
             ))}
             {/* Courses, then tastes: a divider on wide screens, a row break (with a slightly larger gap) on phones. */}
             <span
@@ -229,13 +243,19 @@ export function RecipeListExplorer({
               className="h-0 basis-full sm:mx-1 sm:h-6 sm:w-px sm:basis-auto sm:self-center sm:bg-border"
             />
             {RECIPE_TASTE_CATEGORIES.map((category) => (
-              <CategoryToggle key={category} category={category} dict={dict} />
+              <CategoryToggle
+                key={category}
+                category={category}
+                count={categoryCounts.get(category) ?? 0}
+                dict={dict}
+              />
             ))}
           </ToggleGroup>
 
           <div className="flex min-w-0 flex-wrap items-center justify-between gap-x-2 gap-y-1 xl:justify-end">
             <div className="flex shrink-0 items-center gap-1.5 whitespace-nowrap text-muted-foreground">
-              <span aria-live="polite" className="type-meta">
+              {/* With no filter the per-category counts say it all: keep the total for screen readers only. */}
+              <span aria-live="polite" className={hasActiveFilters ? "type-meta" : "sr-only"}>
                 {formatResultCount(dict, filteredRecipes.length, recipes.length)}
               </span>
               {hasActiveFilters ? (
@@ -421,7 +441,9 @@ function getActiveCategories(searchParams: { getAll: (name: string) => string[] 
     .getAll("cat")
     .filter((value): value is RecipeCategory =>
       categoryValues.includes(value as RecipeCategory),
-    );
+    )
+    // One category at a time; older links may carry several.
+    .slice(0, 1);
 }
 
 function getActiveView(searchParams: { get: (name: string) => string | null }) {
@@ -507,17 +529,20 @@ function formatResultCount(dict: Dictionary, count: number, total: number) {
 
 function CategoryToggle({
   category,
+  count,
   dict,
 }: {
   category: RecipeCategory;
+  count: number;
   dict: Dictionary;
 }) {
   return (
     <ToggleGroupItem
       value={category}
-      className={cn("min-h-10 rounded-full px-4 font-bold", activeToggleClassName)}
+      className={cn("min-h-10 rounded-full px-3 font-bold sm:px-4", activeToggleClassName)}
     >
       {dict.recipeList.categories[category]}
+      <span className="ml-1 text-xs font-semibold tabular-nums opacity-60">{count}</span>
     </ToggleGroupItem>
   );
 }
