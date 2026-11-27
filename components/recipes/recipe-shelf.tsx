@@ -13,7 +13,7 @@ import {
   useSyncExternalStore,
 } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { IntentPrefetchLink } from "./intent-prefetch-link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   AnimatePresence,
@@ -685,7 +685,7 @@ function CoverBook({ recipe, locale, dict, layout, spine, closing, skipIntro, fa
         className={cn("pointer-events-none absolute inset-0 rounded-[5px]", styles.face, styles.backBoard, toneClass)}
         style={{ transform: `translateZ(${-depth / 2}px) rotateY(180deg)` }}
       />
-      <Link
+      <IntentPrefetchLink
         href={`/${locale}/recettes/${recipe.slug}`}
         aria-label={`${recipe.title} — ${dict.recipeList.shelf.readRecipe}`}
         className={cn(
@@ -696,7 +696,7 @@ function CoverBook({ recipe, locale, dict, layout, spine, closing, skipIntro, fa
         draggable={false}
       >
         <BookCover recipe={recipe} toneClass={toneClass} imageSizes="80vw" />
-      </Link>
+      </IntentPrefetchLink>
     </motion.div>
   );
 }
@@ -968,12 +968,12 @@ function BookPreview({
           ))}
         </ul>
       ) : null}
-      <Link
+      <IntentPrefetchLink
         href={`/${locale}/recettes/${recipe.slug}`}
         className={cn(buttonVariants({ size: "sm" }), "mt-auto self-start rounded-full")}
       >
         {dict.recipeList.shelf.readRecipe}
-      </Link>
+      </IntentPrefetchLink>
     </div>
   );
 }

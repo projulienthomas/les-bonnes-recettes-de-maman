@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import type { Locale } from "@/i18n/config";
 import {
@@ -28,6 +28,7 @@ import { RecipeBackLink } from "./recipe-back-link";
 import { getRecipePageTimes, recipeTimeIcons } from "./recipe-times";
 import { StepIngredients } from "./step-ingredients";
 import { RecipeStepText } from "./recipe-step-text";
+import { ServingsFromSearchParams } from "./servings-from-search-params";
 
 const defaultRecipeImageUrl =
   "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=1400&q=85";
@@ -362,6 +363,14 @@ export function RecipePresentation({
       </section>
       {mode === "public" ? (
         <RecipeComments locale={locale} dict={dict} slug={recipe.slug} />
+      ) : null}
+      {mode === "public" ? (
+        <Suspense fallback={null}>
+          <ServingsFromSearchParams
+            referenceServings={recipe.referenceServings}
+            onServingsChange={setSelectedServings}
+          />
+        </Suspense>
       ) : null}
     </main>
   );
