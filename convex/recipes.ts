@@ -48,8 +48,10 @@ declare const process: {
 const localeValidator = v.union(v.literal("fr"), v.literal("en"));
 const recipeSlugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const recipeCategoryValidator = v.union(
-  v.literal("dessert"),
+  v.literal("apero"),
+  v.literal("entree"),
   v.literal("plat"),
+  v.literal("dessert"),
   v.literal("sucre"),
   v.literal("sale"),
 );

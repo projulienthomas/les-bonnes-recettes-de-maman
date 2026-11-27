@@ -17,7 +17,12 @@ import { useDebouncer } from "@tanstack/react-pacer";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
-import { RECIPE_CATEGORIES, type RecipeCategory } from "@/lib/recipe-categories";
+import {
+  RECIPE_CATEGORIES,
+  RECIPE_COURSE_CATEGORIES,
+  RECIPE_TASTE_CATEGORIES,
+  type RecipeCategory,
+} from "@/lib/recipe-categories";
 import { matchesSearchQuery, normalizeSearchText } from "@/lib/recipe-search";
 import { markLeavingRecipeList, rememberRecipeListUrl } from "@/lib/recipe-list-return";
 import { Button } from "@/components/ui/button";
@@ -215,17 +220,16 @@ export function RecipeListExplorer({
             className="flex w-full flex-wrap xl:w-auto"
             aria-label={dict.recipeList.categoriesLabel}
           >
-            {categoryValues.map((category) => (
-              <ToggleGroupItem
-                key={category}
-                value={category}
-                className={cn(
-                  "min-h-10 rounded-full px-4 font-bold",
-                  activeToggleClassName,
-                )}
-              >
-                {dict.recipeList.categories[category]}
-              </ToggleGroupItem>
+            {RECIPE_COURSE_CATEGORIES.map((category) => (
+              <CategoryToggle key={category} category={category} dict={dict} />
+            ))}
+            {/* Courses, then tastes: a divider on wide screens, a row break (with a slightly larger gap) on phones. */}
+            <span
+              aria-hidden="true"
+              className="h-0 basis-full sm:mx-1 sm:h-6 sm:w-px sm:basis-auto sm:self-center sm:bg-border"
+            />
+            {RECIPE_TASTE_CATEGORIES.map((category) => (
+              <CategoryToggle key={category} category={category} dict={dict} />
             ))}
           </ToggleGroup>
 
@@ -499,4 +503,21 @@ function formatResultCount(dict: Dictionary, count: number, total: number) {
     .replace("{count}", String(count))
     .replace("{total}", String(total))
     .replace("{label}", label);
+}
+
+function CategoryToggle({
+  category,
+  dict,
+}: {
+  category: RecipeCategory;
+  dict: Dictionary;
+}) {
+  return (
+    <ToggleGroupItem
+      value={category}
+      className={cn("min-h-10 rounded-full px-4 font-bold", activeToggleClassName)}
+    >
+      {dict.recipeList.categories[category]}
+    </ToggleGroupItem>
+  );
 }

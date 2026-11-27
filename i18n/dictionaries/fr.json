@@ -61,8 +61,10 @@
     },
     "categoriesLabel": "Catégories de recettes",
     "categories": {
-      "dessert": "Dessert",
+      "apero": "Apéro",
+      "entree": "Entrée",
       "plat": "Plat",
+      "dessert": "Dessert",
       "sucre": "Sucré",
       "sale": "Salé"
     },

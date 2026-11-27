@@ -1317,8 +1317,10 @@ function MobileSectionFields({
 }
 
 const categoryLabels: Record<RecipeCategory, string> = {
-  dessert: "Dessert",
+  apero: "Apéro",
+  entree: "Entrée",
   plat: "Plat",
+  dessert: "Dessert",
   sucre: "Sucré",
   sale: "Salé",
 };
@@ -1373,7 +1375,7 @@ function RecipeCategoryField({
         </ComboboxContent>
       </Combobox>
       <FieldDescription>
-        Choisis parmi les quatre catégories du carnet public.
+        Choisis le moment du repas (apéro, entrée, plat, dessert) et, si besoin, le goût (sucré, salé).
       </FieldDescription>
       {legacyLabels.length ? (
         <div
